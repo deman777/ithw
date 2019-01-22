@@ -10,6 +10,7 @@ import akka.stream.alpakka.csv.scaladsl.CsvParsing.lineScanner
 import akka.stream.alpakka.csv.scaladsl.CsvToMap.toMapAsStrings
 import akka.stream.scaladsl._
 
+import scala.collection.immutable
 import scala.concurrent._
 import scala.concurrent.duration._
 
@@ -24,33 +25,33 @@ case object Enter extends Direction
 case class Person(id: String)
 
 trait Event {val timestamp: LocalDateTime}
-case class Movement(timestamp: LocalDateTime, location: Location, person: Person, direction: Direction)
+case class Movement(timestamp: LocalDateTime, location: Location, person: Person, direction: Direction) extends Event
 
 object StreamsApp extends App {
   implicit val system: ActorSystem = ActorSystem("QuickStart")
   implicit val materializer: ActorMaterializer = ActorMaterializer()
   implicit val dispatcher: ExecutionContextExecutor = system.dispatcher
 
+  def parseTimestamp(string: String) = {
+    LocalDateTime.parse(string, DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm"))
+  }
+
   private def toMovement(map: Map[String, String]): Movement = {
-    def toLocation(string: String): Location = string match {
+    def parseLocation(string: String): Location = string match {
       case _ if string.startsWith("Vessel") => Vessel(string.split("\\s")(1))
       case _ => Turbine(string)
     }
 
-    def toDirection(string: String): Direction = string match {
+    def parseDirection(string: String): Direction = string match {
       case "Enter" => Enter
       case "Exit" => Exit
     }
 
-    def toTimestamp(string: String) = {
-      LocalDateTime.parse(string, DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm"))
-    }
-
     Movement(
-      toTimestamp(map("Date")),
-      toLocation(map("Location")),
+      parseTimestamp(map("Date")),
+      parseLocation(map("Location")),
       Person(map("Person")),
-      toDirection(map("Movement type"))
+      parseDirection(map("Movement type"))
     )
   }
 
@@ -58,8 +59,15 @@ object StreamsApp extends App {
     FileIO.fromPath(Paths.get(s"data/$name.csv"))
       .via(lineScanner())
       .via(toMapAsStrings())
+      .log("err")
   }
 
-  private val movements = Await.result(fileToMap("movements").log("err").runWith(Sink.seq), 1.second).map(toMovement)
+  private def readFile[T <: Event](name: String, mapper: Map[String, String] => T): immutable.Seq[T] = {
+    Await.result(fileToMap(name).runWith(Sink.seq), 1.second).map(mapper)
+  }
+
+  private val movements = readFile("movements", toMovement)
   movements.foreach(println)
+
+  system.terminate()
 }

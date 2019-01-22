@@ -11,6 +11,7 @@ import akka.stream.alpakka.csv.scaladsl.CsvToMap.toMapAsStrings
 import akka.stream.scaladsl._
 
 import scala.concurrent._
+import scala.concurrent.duration._
 
 trait Location {val id: String}
 case class Vessel(id: String) extends Location
@@ -46,10 +47,10 @@ object StreamsApp extends App {
     }
 
     Movement(
-      toTimestamp(m("Date")),
-      toLocation(m("Location")),
-      Person(m("Person")),
-      toDirection(m("Movement type"))
+      toTimestamp(map("Date")),
+      toLocation(map("Location")),
+      Person(map("Person")),
+      toDirection(map("Movement type"))
     )
   }
 
@@ -59,11 +60,6 @@ object StreamsApp extends App {
       .via(toMapAsStrings())
   }
 
-  private val movementsSource = fileToMap("movements")
-    .map(toMovement)
-    .log("err")
-
-  movementsSource
-    .runForeach(println)
-    .onComplete(_ => system.terminate())
+  private val movements = Await.result(fileToMap("movements").log("err").runWith(Sink.seq), 1.second).map(toMovement)
+  movements.foreach(println)
 }

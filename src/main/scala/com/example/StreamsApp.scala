@@ -14,10 +14,11 @@ import scala.collection.immutable
 import scala.concurrent._
 import scala.concurrent.duration._
 
+case class Person(id: String)
+
 trait Location {val id: String}
 case class Vessel(id: String) extends Location
 case class Turbine(id: String) extends Location
-case class Person(id: String)
 
 trait Direction
 case object Exit extends Direction

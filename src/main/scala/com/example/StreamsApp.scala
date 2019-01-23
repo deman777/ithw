@@ -17,23 +17,27 @@ import scala.concurrent.duration._
 trait Location {val id: String}
 case class Vessel(id: String) extends Location
 case class Turbine(id: String) extends Location
+case class Person(id: String)
 
 trait Direction
 case object Exit extends Direction
 case object Enter extends Direction
 
-case class Person(id: String)
+trait Status
+case object Working extends Status
+case object Broken extends Status
 
 trait Event {val timestamp: LocalDateTime}
 case class Movement(timestamp: LocalDateTime, location: Location, person: Person, direction: Direction) extends Event
+case class StatusUpdate(timestamp: LocalDateTime, turbine: Turbine, activePower: BigDecimal, status: Status) extends Event
 
 object StreamsApp extends App {
-  implicit val system: ActorSystem = ActorSystem("QuickStart")
-  implicit val materializer: ActorMaterializer = ActorMaterializer()
-  implicit val dispatcher: ExecutionContextExecutor = system.dispatcher
+  private implicit val system: ActorSystem = ActorSystem("QuickStart")
+  private implicit val materializer: ActorMaterializer = ActorMaterializer()
+  private implicit val dispatcher: ExecutionContextExecutor = system.dispatcher
 
-  def parseTimestamp(string: String) = {
-    LocalDateTime.parse(string, DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm"))
+  private def parseTimestamp(string: String, format: String) = {
+    LocalDateTime.parse(string, DateTimeFormatter.ofPattern(format))
   }
 
   private def toMovement(map: Map[String, String]): Movement = {
@@ -41,33 +45,44 @@ object StreamsApp extends App {
       case _ if string.startsWith("Vessel") => Vessel(string.split("\\s")(1))
       case _ => Turbine(string)
     }
-
     def parseDirection(string: String): Direction = string match {
       case "Enter" => Enter
       case "Exit" => Exit
     }
-
     Movement(
-      parseTimestamp(map("Date")),
+      parseTimestamp(map("Date"), "dd.MM.yyyy HH:mm"),
       parseLocation(map("Location")),
       Person(map("Person")),
       parseDirection(map("Movement type"))
     )
   }
 
-  private def fileToMap(name: String) = {
-    FileIO.fromPath(Paths.get(s"data/$name.csv"))
+  private def toStatusUpdate(map: Map[String, String]): StatusUpdate = {
+    def parseStatus(string: String): Status = string match {
+      case "Working" => Working
+      case "Broken" => Broken
+    }
+    StatusUpdate(
+      parseTimestamp(map("Date"), "yyyy-MM-dd HH:mm:ss"),
+      Turbine(map("ID")),
+      BigDecimal(map("ActivePower (MW)")),
+      parseStatus(map("Status"))
+    )
+  }
+
+  private def readFile[T <: Event](name: String, toEvent: Map[String, String] => T): immutable.Seq[T] = {
+    val mapSource = FileIO.fromPath(Paths.get(s"data/$name.csv"))
       .via(lineScanner())
       .via(toMapAsStrings())
       .log("err")
-  }
-
-  private def readFile[T <: Event](name: String, mapper: Map[String, String] => T): immutable.Seq[T] = {
-    Await.result(fileToMap(name).runWith(Sink.seq), 1.second).map(mapper)
+    Await.result(mapSource.runWith(Sink.seq), 1.second).map(toEvent)
   }
 
   private val movements = readFile("movements", toMovement)
+  private val statusUpdates = readFile("turbines", toStatusUpdate)
+
   movements.foreach(println)
+  statusUpdates.foreach(println)
 
   system.terminate()
 }

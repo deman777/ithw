@@ -3,17 +3,17 @@ package com.example
 import java.time.LocalDateTime
 
 import akka.actor.{Actor, ActorLogging, Props}
-import com.example.Printer.Error
+import com.example.ErrorPrinter.Error
 
-class Printer extends Actor with ActorLogging {
+class ErrorPrinter extends Actor with ActorLogging {
   override def receive: Receive = {
     case error: Error =>
       log.info(error.toString)
   }
 }
 
-object Printer {
-  val props: Props = Props[Printer]
+object ErrorPrinter {
+  val props: Props = Props[ErrorPrinter]
   trait ErrorState {
     val name: String
     override def toString: String = name

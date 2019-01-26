@@ -1,11 +1,8 @@
 **/.DS_Store
-*.class
 *.log
-*.iml
 *.ipr
 *.iws
 .idea
-out
 .cache/
 .history/
 .lib/
@@ -20,7 +17,5 @@ project/plugins/project/
 logs/
 project/*-shim.sbt
 project/project/
-project/target/
-target/
 .scala_dependencies
 .worksheet

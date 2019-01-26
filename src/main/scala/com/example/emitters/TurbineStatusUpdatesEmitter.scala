@@ -4,10 +4,10 @@ import akka.actor.Props
 import com.example._
 
 class TurbineStatusUpdatesEmitter extends AbstractEventsEmitter[TurbineStatusUpdate] {
-  override protected val name: String = _
+  override protected val name: String = "turbines"
   override protected val toEvent: Map[String, String] => TurbineStatusUpdate = toStatusUpdate
 
-  private val parseStatus = {
+  private val parseStatus : PartialFunction[String, Status] = {
     case "Working" => Working
     case "Broken" => Broken
   }

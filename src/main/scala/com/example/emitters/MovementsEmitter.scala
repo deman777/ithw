@@ -12,7 +12,7 @@ class MovementsEmitter extends AbstractEventsEmitter[PersonMovement] {
     case _ => TurbineId(location)
   }
 
-  private val parseDirection = {
+  private val parseDirection: PartialFunction[String, Direction] = {
     case "Enter" => Enter
     case "Exit" => Exit
   }

@@ -1,6 +1,6 @@
 package com.example
 
-import akka.actor.Actor
+import akka.actor.{Actor, Props}
 
 class Turbines extends Actor {
 
@@ -13,6 +13,10 @@ class Turbines extends Actor {
     context.child(turbineId.id)
       .getOrElse(context.system.actorOf(Turbine.props(turbineId), turbineId.id))
   }
+}
+
+object Turbines {
+  val props: Props = Props[Turbines]
 }
 
 

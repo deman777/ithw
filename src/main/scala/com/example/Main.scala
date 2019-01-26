@@ -4,11 +4,12 @@ import java.nio.file.Paths
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
-import akka.actor.ActorSystem
+import akka.actor.{ActorRef, ActorSystem}
 import akka.stream._
 import akka.stream.alpakka.csv.scaladsl.CsvParsing.lineScanner
 import akka.stream.alpakka.csv.scaladsl.CsvToMap.toMapAsStrings
 import akka.stream.scaladsl._
+import com.example.Clock.Start
 
 import scala.collection.immutable
 import scala.concurrent._
@@ -82,8 +83,11 @@ object Main extends App {
   private val movements = readFile("movements", toMovement)
   private val statusUpdates = readFile("turbines", toStatusUpdate)
 
-  movements.foreach(println)
-  statusUpdates.foreach(println)
+  private val processors: ActorRef = system.actorOf(Processors.props)
 
-  system.terminate()
+  private val movementsEmitter: ActorRef = system.actorOf(EventsEmitter.props(movements, processors))
+  private val turbineStatusUpdatesEmitter: ActorRef = system.actorOf(EventsEmitter.props(statusUpdates, processors))
+
+  private val clock: ActorRef = system.actorOf(Clock.props(movementsEmitter, turbineStatusUpdatesEmitter), "clock")
+  clock ! Start(statusUpdates.head.timestamp)
 }

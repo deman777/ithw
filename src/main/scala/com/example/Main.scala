@@ -32,7 +32,7 @@ trait Event {val timestamp: LocalDateTime}
 case class PersonMovement(timestamp: LocalDateTime, location: Location, person: Person, direction: Direction) extends Event
 case class TurbineStatusUpdate(timestamp: LocalDateTime, turbine: Turbine, activePower: BigDecimal, status: Status) extends Event
 
-object AppEntryPoint extends App {
+object Main extends App {
   private implicit val system: ActorSystem = ActorSystem("QuickStart")
   private implicit val materializer: ActorMaterializer = ActorMaterializer()
   private implicit val dispatcher: ExecutionContextExecutor = system.dispatcher

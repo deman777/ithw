@@ -9,6 +9,7 @@ class Processors extends Actor {
     context.system.actorOf(People.props, "people")
     context.system.actorOf(Turbines.props, "turbines")
   }
+
   override def receive: Receive = {
     case event: Event => context.children.foreach(_ ! event)
   }

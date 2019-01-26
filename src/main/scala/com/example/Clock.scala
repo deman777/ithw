@@ -9,7 +9,7 @@ import scala.concurrent.duration.Duration.Zero
 import scala.concurrent.duration.{DurationInt, FiniteDuration}
 
 
-class Clock(listeners: ActorRef*) extends Actor {
+class Clock(emitters: ActorRef) extends Actor {
 
   import context.dispatcher
 
@@ -21,7 +21,7 @@ class Clock(listeners: ActorRef*) extends Actor {
 
   private def started(next: LocalDateTime): Receive = {
     case InnerTick =>
-      listeners.foreach(_ ! Tick(next))
+      emitters ! Tick(next)
       context.become(started(next.plusMinutes(1)))
   }
 }
@@ -31,5 +31,5 @@ object Clock {
   final case class Tick(time: LocalDateTime)
   private final case object InnerTick
   private def speedy(duration: FiniteDuration): FiniteDuration = duration * (14.minutes / 7.days).longValue()
-  def props(listeners: ActorRef*): Props = Props(new Clock(listeners: _*))
+  def props(emitters: ActorRef): Props = Props(new Clock(emitters))
 }

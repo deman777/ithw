@@ -7,5 +7,5 @@ class Person(personId: PersonId) extends Actor {
 }
 
 object Person {
-  def props(personId: PersonId): Props = Props(personId)
+  def props(personId: PersonId): Props = Props(new Person(personId))
 }

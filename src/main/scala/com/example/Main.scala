@@ -8,7 +8,7 @@ import com.example.emitters.Emitters
 import com.example.processors.Processors
 
 object Main extends App {
-  private implicit val system: ActorSystem = ActorSystem("QuickStart")
+  private implicit val system: ActorSystem = ActorSystem("main")
 
   private val processors: ActorRef = system.actorOf(Processors.props, "processors")
   private val emitters: ActorRef = system.actorOf(Emitters.props(processors), "emitters")

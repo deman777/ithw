@@ -14,11 +14,16 @@ class Printer extends Actor with ActorLogging {
 
 object Printer {
   val props: Props = Props[Printer]
-  private case class ErrorState(name: String) {
+  trait ErrorState {
+    val name: String
     override def toString: String = name
   }
-  case object Open extends ErrorState("open")
-  case object Closed extends ErrorState("closed")
+  case object Open extends ErrorState {
+    override val name: String = "open"
+  }
+  case object Closed extends ErrorState {
+    override val name: String = "closed"
+  }
   case class Error(
     date: LocalDateTime,
     turbine: TurbineId,
@@ -26,7 +31,7 @@ object Printer {
     error: String,
     errorState: ErrorState
   ) {
-    def toJson: String =
+    override def toString: String =
       s"""
          |{
          |  "date": "$date"

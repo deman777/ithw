@@ -29,8 +29,8 @@ case object Working extends Status
 case object Broken extends Status
 
 trait Event {val timestamp: LocalDateTime}
-case class Movement(timestamp: LocalDateTime, location: Location, person: Person, direction: Direction) extends Event
-case class StatusUpdate(timestamp: LocalDateTime, turbine: Turbine, activePower: BigDecimal, status: Status) extends Event
+case class PersonMovement(timestamp: LocalDateTime, location: Location, person: Person, direction: Direction) extends Event
+case class TurbineStatusUpdate(timestamp: LocalDateTime, turbine: Turbine, activePower: BigDecimal, status: Status) extends Event
 
 object StreamsApp extends App {
   private implicit val system: ActorSystem = ActorSystem("QuickStart")
@@ -41,7 +41,7 @@ object StreamsApp extends App {
     LocalDateTime.parse(string, DateTimeFormatter.ofPattern(format))
   }
 
-  private def toMovement(map: Map[String, String]): Movement = {
+  private def toMovement(map: Map[String, String]): PersonMovement = {
     def parseLocation(string: String): Location = string match {
       case _ if string.startsWith("Vessel") => Vessel(string.split("\\s")(1))
       case _ => Turbine(string)
@@ -50,7 +50,7 @@ object StreamsApp extends App {
       case "Enter" => Enter
       case "Exit" => Exit
     }
-    Movement(
+    PersonMovement(
       parseTimestamp(map("Date"), "dd.MM.yyyy HH:mm"),
       parseLocation(map("Location")),
       Person(map("Person")),
@@ -58,12 +58,12 @@ object StreamsApp extends App {
     )
   }
 
-  private def toStatusUpdate(map: Map[String, String]): StatusUpdate = {
+  private def toStatusUpdate(map: Map[String, String]): TurbineStatusUpdate = {
     def parseStatus(string: String): Status = string match {
       case "Working" => Working
       case "Broken" => Broken
     }
-    StatusUpdate(
+    TurbineStatusUpdate(
       parseTimestamp(map("Date"), "yyyy-MM-dd HH:mm:ss"),
       Turbine(map("ID")),
       BigDecimal(map("ActivePower (MW)")),

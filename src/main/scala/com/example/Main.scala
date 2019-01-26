@@ -14,11 +14,11 @@ import scala.collection.immutable
 import scala.concurrent._
 import scala.concurrent.duration._
 
-case class Person(id: String)
+case class PersonId(id: String)
 
 trait Location {val id: String}
-case class Vessel(id: String) extends Location
-case class Turbine(id: String) extends Location
+case class VesselId(id: String) extends Location
+case class TurbineId(id: String) extends Location
 
 trait Direction
 case object Exit extends Direction
@@ -29,8 +29,8 @@ case object Working extends Status
 case object Broken extends Status
 
 trait Event {val timestamp: LocalDateTime}
-case class PersonMovement(timestamp: LocalDateTime, location: Location, person: Person, direction: Direction) extends Event
-case class TurbineStatusUpdate(timestamp: LocalDateTime, turbine: Turbine, activePower: BigDecimal, status: Status) extends Event
+case class PersonMovement(timestamp: LocalDateTime, location: Location, person: PersonId, direction: Direction) extends Event
+case class TurbineStatusUpdate(timestamp: LocalDateTime, turbine: TurbineId, activePower: BigDecimal, status: Status) extends Event
 
 object Main extends App {
   private implicit val system: ActorSystem = ActorSystem("QuickStart")
@@ -43,8 +43,8 @@ object Main extends App {
 
   private def toMovement(map: Map[String, String]): PersonMovement = {
     def parseLocation(string: String): Location = string match {
-      case _ if string.startsWith("Vessel") => Vessel(string.split("\\s")(1))
-      case _ => Turbine(string)
+      case _ if string.startsWith("Vessel") => VesselId(string.split("\\s")(1))
+      case _ => TurbineId(string)
     }
     def parseDirection(string: String): Direction = string match {
       case "Enter" => Enter
@@ -53,7 +53,7 @@ object Main extends App {
     PersonMovement(
       parseTimestamp(map("Date"), "dd.MM.yyyy HH:mm"),
       parseLocation(map("Location")),
-      Person(map("Person")),
+      PersonId(map("Person")),
       parseDirection(map("Movement type"))
     )
   }
@@ -65,7 +65,7 @@ object Main extends App {
     }
     TurbineStatusUpdate(
       parseTimestamp(map("Date"), "yyyy-MM-dd HH:mm:ss"),
-      Turbine(map("ID")),
+      TurbineId(map("ID")),
       BigDecimal(map("ActivePower (MW)")),
       parseStatus(map("Status"))
     )

@@ -6,6 +6,7 @@ import akka.actor.{ActorRef, ActorSystem}
 import akka.stream._
 import com.example.Clock.Start
 import com.example.emitters.Emitters
+import com.example.processors.Processors
 
 import scala.concurrent._
 

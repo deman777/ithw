@@ -1,6 +1,7 @@
-package com.example
+package com.example.processors
 
 import akka.actor.{Actor, Props}
+import com.example.TurbineId
 
 class Turbine(id: TurbineId) extends Actor {
   override def receive: Receive = PartialFunction.empty

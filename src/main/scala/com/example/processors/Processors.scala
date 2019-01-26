@@ -1,6 +1,7 @@
-package com.example
+package com.example.processors
 
 import akka.actor.{Actor, Props}
+import com.example.Event
 
 class Processors extends Actor {
 

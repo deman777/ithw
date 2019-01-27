@@ -2,10 +2,10 @@ package com.example
 
 import java.time.LocalDateTime
 
-import akka.actor.{Actor, ActorRef}
+import akka.actor.{Actor, ActorRef, Props}
 import com.example.Clock.Tick
 
-final class Reminders extends Actor {
+final class Reminders(master: ActorRef) extends Actor {
 
   override def receive: Receive = withState(Seq.empty, LocalDateTime.MIN)
 
@@ -23,8 +23,12 @@ final class Reminders extends Actor {
   private final case class RemindAt(time: LocalDateTime, who: ActorRef, message: Any)
 }
 
-trait ToReminder
-final case class Remind(in: java.time.Duration, message: Any) extends ToReminder
-case object ClearReminders extends ToReminder
+object Reminder {
+  def props(master: ActorRef): Props = Props(new Reminders(master))
+}
+
+trait ToReminders
+final case class Remind(in: java.time.Duration, message: Any) extends ToReminders
+case object ClearReminders extends ToReminders
 
 final case class Reminder(timestamp: LocalDateTime, message: Any)

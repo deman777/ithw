@@ -18,11 +18,18 @@ class Person(personId: PersonId) extends Actor {
         case Movement(_, _: VesselId, _, Enter) =>
           movement match {
             case Movement(timestamp, turbineId: TurbineId, _, Enter) =>
-              context.parent ! EventError(timestamp, turbineId, personId,
-                "Can not enter turbine without leaving ship", Closed)
+              error(timestamp, turbineId, "Can not enter turbine without leaving ship")
+          }
+        case Movement(_, _: VesselId, _, Exit) =>
+          movement match {
+            case Movement(timestamp, turbineId: TurbineId, _, Exit) =>
+              error(timestamp, turbineId, "Can not exit turbine without entering it")
           }
       }
       context.become(after(movement))
+  }
+  private def error(timestamp: LocalDateTime, turbineId: TurbineId, message: String): Unit = {
+    context.parent ! EventError(timestamp, turbineId, personId, message, Closed)
   }
 }
 

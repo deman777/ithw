@@ -15,14 +15,21 @@ class Clock extends Actor {
 
   override def receive: Receive = {
     case Start(startTime) =>
-      context.become(ticking(startTime))
+      context.become(started(startTime))
       context.system.scheduler.schedule(Zero, speedy(1.minute), self, InnerTick);
   }
 
-  private def ticking(next: LocalDateTime): Receive = {
+  private def started(startTime: LocalDateTime): Receive = {
     case InnerTick =>
-      context.parent ! Tick(next)
-      context.become(ticking(next.plusMinutes(1)))
+      context.become(ticking(startTime))
+      context.parent ! Tick(startTime)
+  }
+
+  private def ticking(lastTime: LocalDateTime): Receive = {
+    case InnerTick =>
+      val newTime = lastTime.plusMinutes(1)
+      context.become(ticking(newTime))
+      context.parent ! Tick(newTime)
   }
 }
 

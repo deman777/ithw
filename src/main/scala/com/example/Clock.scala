@@ -2,14 +2,14 @@ package com.example
 
 import java.time.LocalDateTime
 
-import akka.actor.{Actor, ActorRef, Props}
+import akka.actor.{Actor, Props}
 import com.example.Clock._
 
 import scala.concurrent.duration.Duration.Zero
 import scala.concurrent.duration.{DurationInt, FiniteDuration}
 
 
-class Clock(master: ActorRef) extends Actor {
+class Clock extends Actor {
 
   import context.dispatcher
 
@@ -21,7 +21,7 @@ class Clock(master: ActorRef) extends Actor {
 
   private def started(next: LocalDateTime): Receive = {
     case InnerTick =>
-      master ! Tick(next)
+      context.parent ! Tick(next)
       context.become(started(next.plusMinutes(1)))
   }
 }
@@ -31,5 +31,5 @@ object Clock {
   final case class Tick(time: LocalDateTime)
   private final case object InnerTick
   private def speedy(duration: FiniteDuration): FiniteDuration = duration * (14.minutes / 7.days).longValue()
-  def props(master: ActorRef): Props = Props(new Clock(master))
+  val props: Props = Props[Clock]
 }

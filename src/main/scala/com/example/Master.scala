@@ -12,8 +12,8 @@ class Master extends Actor {
   override def preStart(): Unit = {
     val processors = context.system.actorOf(Processors.props, "processors")
     val emitters = context.system.actorOf(Emitters.props(self), "emitters")
-    val clock = context.system.actorOf(Clock.props(self), "clock")
-    val reminders = context.system.actorOf(Reminder.props(self), "reminders")
+    val clock = context.system.actorOf(Clock.props, "clock")
+    val reminders = context.system.actorOf(Reminder.props, "reminders")
     context.become({
       case start: Start =>
         clock.forward(start)

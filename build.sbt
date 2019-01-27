@@ -1,4 +1,4 @@
-name := "akka-quickstart-scala"
+name := "ithw"
 
 version := "1.0"
 

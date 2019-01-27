@@ -2,19 +2,20 @@ package com.example
 
 import java.time.LocalDateTime
 
-import akka.actor.{Actor, Props}
+import akka.actor.{Actor, ActorLogging, Props}
 import com.example.Clock._
 
 import scala.concurrent.duration.Duration.Zero
 import scala.concurrent.duration.{DurationInt, FiniteDuration}
 
 
-class Clock extends Actor {
+class Clock extends Actor with ActorLogging {
 
   import context.dispatcher
 
   override def receive: Receive = {
     case Start(startTime) =>
+      log.info(s"Started at $startTime")
       context.become(started(startTime))
       context.system.scheduler.schedule(Zero, speedy(1.minute), self, InnerTick);
   }
@@ -22,14 +23,19 @@ class Clock extends Actor {
   private def started(startTime: LocalDateTime): Receive = {
     case InnerTick =>
       context.become(ticking(startTime))
-      context.parent ! Tick(startTime)
+      tick(startTime)
   }
 
   private def ticking(lastTime: LocalDateTime): Receive = {
     case InnerTick =>
       val newTime = lastTime.plusMinutes(1)
       context.become(ticking(newTime))
-      context.parent ! Tick(newTime)
+      tick(newTime)
+  }
+
+  private def tick(time: LocalDateTime): Unit = {
+    log.info(s"Tick $time")
+    context.parent ! Tick(time)
   }
 }
 

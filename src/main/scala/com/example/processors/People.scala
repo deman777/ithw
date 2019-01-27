@@ -12,7 +12,7 @@ class People extends Actor {
 
   private def person(personId: PersonId) =
     context.child(personId.id)
-      .getOrElse(context.system.actorOf(Person.props(personId), personId.id))
+      .getOrElse(context.actorOf(Person.props(personId), personId.id))
 }
 
 object People {

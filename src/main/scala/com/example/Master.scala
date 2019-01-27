@@ -1,29 +1,26 @@
 package com.example
 
-import akka.actor.Actor
+import akka.actor.{Actor, ActorLogging}
 import com.example.Clock.{Start, Tick}
 import com.example.emitters.Emitters
 import com.example.processors.Processors
 
-import scala.PartialFunction.empty
+class Master extends Actor with ActorLogging {
+  private val processors = context.actorOf(Processors.props, "processors")
+  private val emitters = context.actorOf(Emitters.props, "emitters")
+  private val clock = context.actorOf(Clock.props, "clock")
+  private val reminders = context.actorOf(Reminder.props, "reminders")
 
-class Master extends Actor {
-  override def receive: Receive = empty
-  override def preStart(): Unit = {
-    val processors = context.system.actorOf(Processors.props, "processors")
-    val emitters = context.system.actorOf(Emitters.props, "emitters")
-    val clock = context.system.actorOf(Clock.props, "clock")
-    val reminders = context.system.actorOf(Reminder.props, "reminders")
-    context.become({
-      case start: Start =>
-        clock.forward(start)
-      case tick: Tick =>
-        emitters.forward(tick)
-        reminders.forward(tick)
-      case event: Event =>
-        processors.forward(event)
-      case toReminders: ToReminders =>
-        reminders.forward(toReminders)
-    })
+  override def receive: Receive = {
+    case start: Start =>
+      log.info("Forwarding start to clock.")
+      clock.forward(start)
+    case tick: Tick =>
+      emitters.forward(tick)
+      reminders.forward(tick)
+    case event: Event =>
+      processors.forward(event)
+    case toReminders: ToReminders =>
+      reminders.forward(toReminders)
   }
 }

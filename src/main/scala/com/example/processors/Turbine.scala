@@ -1,5 +1,6 @@
 package com.example.processors
 
+import java.time.Duration
 import java.time.Duration.{ofHours, ofMinutes}
 
 import akka.actor.{Actor, Props}
@@ -11,8 +12,8 @@ class Turbine(turbineId: TurbineId) extends Actor {
   }
 
   private def onBroken(statusUpdate: StatusUpdate): Unit = {
-    context.parent ! EventError(statusUpdate.timestamp, turbineId, None, "Turbine is broken", Open)
-    context.parent ! Remind(ofHours(4), BrokenFourHours)
+    reportError(EventError(statusUpdate.timestamp, turbineId, None, "Turbine is broken", Open))
+    remind(ofHours(4), BrokenFourHours)
     context.become({
       case Movement(_, _, _, Enter) => onEnter()
       case r@Reminder(_, BrokenFourHours) => onBrokenFourHours(r)
@@ -21,7 +22,7 @@ class Turbine(turbineId: TurbineId) extends Actor {
   }
 
   private def onBrokenFourHours(r: Reminder): Unit = {
-    context.parent ! EventError(r.timestamp, turbineId, None, "Turbine is broken for more than 4 hours", Open)
+    reportError(EventError(r.timestamp, turbineId, None, "Turbine is broken for more than 4 hours", Open))
   }
 
   private def onEnter(): Unit = {
@@ -33,10 +34,10 @@ class Turbine(turbineId: TurbineId) extends Actor {
   }
 
   private def onExit(movement: Movement): Unit = {
-    context.parent ! Remind(ofMinutes(3), BrokenAfterTechnician(movement.personId))
+    remind(ofMinutes(3), BrokenAfterTechnician(movement.personId))
     context.become({
       case Reminder(timestamp, BrokenAfterTechnician(personId)) =>
-        context.parent ! EventError(timestamp, turbineId, Some(personId), "Technician did not repair turbine", Open)
+        reportError(EventError(timestamp, turbineId, Some(personId), "Technician did not repair turbine", Open))
       case StatusUpdate(_, _, Working) => onWorking()
     })
   }
@@ -50,6 +51,14 @@ class Turbine(turbineId: TurbineId) extends Actor {
 
   private def clearReminders(): Unit = {
     context.parent ! ClearReminders
+  }
+
+  private def remind(in: Duration, message: Any): Unit = {
+    context.parent ! Remind(in, message)
+  }
+
+  private def reportError(eventError: EventError): Unit = {
+    context.parent ! eventError
   }
 }
 

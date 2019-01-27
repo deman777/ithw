@@ -1,17 +1,23 @@
 package com.example.processors
 
 import akka.actor.{Actor, Props}
-import com.example.{EventError, Open, StatusUpdate, TurbineId}
+import com.example._
 
-class Turbine(id: TurbineId) extends Actor {
+class Turbine extends Actor {
   override def receive: Receive = {
-    case m: StatusUpdate =>
-      context.parent ! EventError(m.timestamp, m.turbine, Option.empty, "Turbine is broken", Open)
+    case m@StatusUpdate(timestamp, turbine, Broken) =>
+      context.parent ! EventError(timestamp, turbine, Option.empty, "Turbine is broken", Open)
+      context.become(broken(m))
+  }
+
+  def broken(lastStatus: StatusUpdate): Receive = {
+    case Movement(timestamp, turbineId: TurbineId, person, Exit) =>
+      context.parent ! EventError(timestamp, turbineId, Some(person), "Technician did not repair turbine", Open)
   }
 }
 
 object Turbine {
-  def props(turbineId: TurbineId): Props = Props(new Turbine(turbineId))
+  def props: Props = Props[Turbine]
 }
 
 

@@ -16,7 +16,6 @@ class TurbineStatusUpdatesEmitter extends AbstractEventsEmitter[StatusUpdate] {
     StatusUpdate(
       Time.parse(map("Date"), "yyyy-MM-dd HH:mm:ss"),
       TurbineId(map("ID")),
-      BigDecimal(map("ActivePower (MW)")),
       parseStatus(map("Status"))
     )
   }

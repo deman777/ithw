@@ -29,6 +29,5 @@ case class Movement(
 case class StatusUpdate(
   timestamp: LocalDateTime,
   turbine: TurbineId,
-  activePower: BigDecimal,
   status: Status
 ) extends Event

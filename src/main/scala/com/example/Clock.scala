@@ -14,8 +14,8 @@ class Clock extends Actor {
   import context.dispatcher
 
   override def receive: Receive = {
-    case Start(begin) =>
-      context.become(ticking(begin))
+    case Start(startTime) =>
+      context.become(ticking(startTime))
       context.system.scheduler.schedule(Zero, speedy(1.minute), self, InnerTick);
   }
 

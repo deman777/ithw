@@ -1,6 +1,6 @@
 package com.example.processors
 
-import java.time.Duration.ofMinutes
+import java.time.Duration.{ofHours, ofMinutes}
 import java.time.LocalDateTime
 
 import akka.actor.{ActorRef, ActorSystem}
@@ -28,7 +28,7 @@ class TurbineTest extends TestKit(ActorSystem("MySpec")) with ImplicitSender
   test("Turbine stops working") {
     val m = broken
     turbine ! m
-    expectMsg(EventError(m.timestamp, turbineId, Option.empty, "Turbine is broken", Open))
+    expectMsg(EventError(m.timestamp, turbineId, None, "Turbine is broken", Open))
   }
 
   test("A technician exits a turbine without having repaired the turbine") {
@@ -44,6 +44,17 @@ class TurbineTest extends TestKit(ActorSystem("MySpec")) with ImplicitSender
     turbine ! Reminder(timestamp, IsBrokenAfterTechnician(personId))
 
     expectMsg(EventError(timestamp, turbineId, Some(personId), "Technician did not repair turbine", Open))
+  }
+
+  test("A turbine has been in a Broken state for more than 4 hours") {
+    turbine ! broken
+    receiveOne(Undefined)
+    expectMsg(Remind(ofHours(4), IsBrokenFourHours))
+
+    val timestamp = LocalDateTime.now()
+    turbine ! Reminder(timestamp, IsBrokenFourHours)
+
+    expectMsg(EventError(timestamp, turbineId, None, "Turbine is broken for more than 4 hours", Open))
   }
 
   private def enter = Movement(LocalDateTime.now(), turbineId, personId, Enter)

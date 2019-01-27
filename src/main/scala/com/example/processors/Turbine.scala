@@ -1,30 +1,45 @@
 package com.example.processors
 
-import java.time.Duration.ofMinutes
+import java.time.Duration.{ofHours, ofMinutes}
 
 import akka.actor.{Actor, Props}
 import com.example._
 
 class Turbine(turbineId: TurbineId) extends Actor {
   override def receive: Receive = {
-    case m@StatusUpdate(timestamp, turbine, Broken) =>
-      context.parent ! EventError(timestamp, turbine, Option.empty, "Turbine is broken", Open)
-      context.become(broken(m))
+    case m@StatusUpdate(_, _, Broken) => onBroken(m)
   }
 
-  def brokenWithTechnician: Receive = {
-    case Movement(_, _, personId, Exit) =>
-      context.parent ! Remind(ofMinutes(3), IsBrokenAfterTechnician(personId))
-      context.become(brokenAfterTechnician)
+  def onBrokenFourHours(r: Reminder): Unit = {
+    context.parent ! EventError(r.timestamp, turbineId, None, "Turbine is broken for more than 4 hours", Open)
   }
 
-  def brokenAfterTechnician: Receive = {
-    case Reminder(timestamp, IsBrokenAfterTechnician(personId)) =>
-      context.parent ! EventError(timestamp, turbineId, Some(personId), "Technician did not repair turbine", Open)
+  private def onBroken(statusUpdate: StatusUpdate): Unit = {
+    context.parent ! EventError(statusUpdate.timestamp, turbineId, None, "Turbine is broken", Open)
+    context.parent ! Remind(ofHours(4), IsBrokenFourHours)
+    context.become({
+      case m@Movement(_, _, _, Enter) => onEnter(m)
+      case r@Reminder(_, IsBrokenFourHours) => onBrokenFourHours(r)
+    })
   }
 
-  def broken(lastStatus: StatusUpdate): Receive = {
-    case Movement(_, _, _, Enter) => context.become(brokenWithTechnician)
+  private def onEnter(movement: Movement): Unit = {
+    context.parent ! ClearReminders
+    context.become({
+      case m@Movement(_, _, _, Exit) => onExit(m)
+    })
+  }
+
+  private def onExit(movement: Movement): Unit = {
+    context.parent ! Remind(ofMinutes(3), IsBrokenAfterTechnician(movement.personId))
+    context.become({
+      case Reminder(timestamp, IsBrokenAfterTechnician(personId)) =>
+        context.parent ! EventError(timestamp, turbineId, Some(personId), "Technician did not repair turbine", Open)
+    })
+  }
+
+  private def onWorking(statusUpdate: StatusUpdate): Unit = {
+    context.parent ! ClearReminders
   }
 }
 
@@ -33,5 +48,6 @@ object Turbine {
 }
 
 case class IsBrokenAfterTechnician(personId: PersonId)
+case object IsBrokenFourHours
 
 

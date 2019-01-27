@@ -3,28 +3,21 @@ package com.example
 import java.time.LocalDateTime
 
 import akka.actor.{Actor, ActorLogging, Props}
-import com.example.ErrorPrinter.Error
+import com.example.ErrorPrinter.EventError
 
 class ErrorPrinter extends Actor with ActorLogging {
   override def receive: Receive = {
-    case error: Error =>
+    case error: EventError =>
       log.info(error.toString)
   }
 }
 
 object ErrorPrinter {
   val props: Props = Props[ErrorPrinter]
-  trait ErrorState {
-    val name: String
-    override def toString: String = name
-  }
-  case object Open extends ErrorState {
-    override val name: String = "open"
-  }
-  case object Closed extends ErrorState {
-    override val name: String = "closed"
-  }
-  case class Error(
+  trait ErrorState
+  case object Open extends ErrorState
+  case object Closed extends ErrorState
+  case class EventError(
     date: LocalDateTime,
     turbine: TurbineId,
     person: PersonId,
@@ -38,7 +31,7 @@ object ErrorPrinter {
          |  "turbine": "${turbine.id}",
          |  "person": "${person.id}",
          |  "error": "$error",
-         |  "error_state": "$errorState",
+         |  "error_state": "${errorState.getClass.getSimpleName.toLowerCase}",
          |}
       """.stripMargin
   }

@@ -1,17 +1,18 @@
 package com.example.processors
 
 import akka.actor.{Actor, Props}
-import com.example.Event
+import com.example.{Movement, StatusUpdate}
 
 class Processors extends Actor {
-
-  override def preStart(): Unit = {
-    context.system.actorOf(People.props, "people")
-    context.system.actorOf(Turbines.props, "turbines")
-  }
+  private val people = context.system.actorOf(People.props, "people")
+  private val turbines = context.system.actorOf(Turbines.props, "turbines")
 
   override def receive: Receive = {
-    case event: Event => context.children.foreach(_ ! event)
+    case statusUpdate: StatusUpdate =>
+      turbines.forward(statusUpdate)
+    case movement: Movement =>
+      people.forward(movement)
+      turbines.forward(movement)
   }
 }
 

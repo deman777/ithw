@@ -12,7 +12,7 @@ class Turbine(turbineId: TurbineId) extends Actor {
   }
 
   private def onBroken(statusUpdate: StatusUpdate): Unit = {
-    reportError(EventError(statusUpdate.timestamp, turbineId, None, "Turbine is broken", Open))
+    reportError(LogError(statusUpdate.timestamp, turbineId, None, "Turbine is broken", Open))
     remind(ofHours(4), BrokenFourHours)
     context.become({
       case Movement(_, _, _, Enter) => onEnter()
@@ -22,7 +22,7 @@ class Turbine(turbineId: TurbineId) extends Actor {
   }
 
   private def onBrokenFourHours(r: Reminder): Unit = {
-    reportError(EventError(r.timestamp, turbineId, None, "Turbine is broken for more than 4 hours", Open))
+    reportError(LogError(r.timestamp, turbineId, None, "Turbine is broken for more than 4 hours", Open))
   }
 
   private def onEnter(): Unit = {
@@ -37,7 +37,7 @@ class Turbine(turbineId: TurbineId) extends Actor {
     remind(ofMinutes(3), BrokenAfterTechnician(movement.personId))
     context.become({
       case Reminder(timestamp, BrokenAfterTechnician(personId)) =>
-        reportError(EventError(timestamp, turbineId, Some(personId), "Technician did not repair turbine", Open))
+        reportError(LogError(timestamp, turbineId, Some(personId), "Technician did not repair turbine", Open))
       case StatusUpdate(_, _, Working) => onWorking()
     })
   }
@@ -57,7 +57,7 @@ class Turbine(turbineId: TurbineId) extends Actor {
     context.parent ! Remind(in, message)
   }
 
-  private def reportError(eventError: EventError): Unit = {
+  private def reportError(eventError: LogError): Unit = {
     context.parent ! eventError
   }
 }

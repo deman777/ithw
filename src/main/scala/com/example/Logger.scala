@@ -4,22 +4,22 @@ import java.time.LocalDateTime
 
 import akka.actor.{Actor, ActorLogging, Props}
 
-class ErrorPrinter extends Actor with ActorLogging {
+class Logger extends Actor with ActorLogging {
   override def receive: Receive = {
-    case error: EventError =>
-      log.info(error.toString)
+    case error: LogError =>
+      log.error(error.toString)
   }
 }
 
-object ErrorPrinter {
-  val props: Props = Props[ErrorPrinter]
+object Logger {
+  val props: Props = Props[Logger]
 }
 
 trait ErrorState
 case object Open extends ErrorState
 case object Closed extends ErrorState
 
-case class EventError(
+case class LogError(
   date: LocalDateTime,
   turbine: TurbineId,
   person: Option[PersonId],

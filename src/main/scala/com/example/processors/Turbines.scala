@@ -1,9 +1,9 @@
 package com.example.processors
 
-import akka.actor.{Actor, Props}
+import akka.actor.{Actor, ActorRef, Props}
 import com.example._
 
-class Turbines extends Actor {
+class Turbines(master: ActorRef) extends Actor {
 
   override def receive: Receive = {
     case m@StatusUpdate(_, turbineId: TurbineId, _) => turbine(turbineId) ! m
@@ -17,7 +17,7 @@ class Turbines extends Actor {
 }
 
 object Turbines {
-  val props: Props = Props[Turbines]
+  def props(master: ActorRef): Props = Props(new Turbines(master))
 }
 
 

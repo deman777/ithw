@@ -26,8 +26,8 @@ class PersonTest extends TestKit(ActorSystem("MySpec")) with ImplicitSender
   }
 
   test("Person moves onto a turbine without having exited a ship") {
-    person ! toShip
-    val movement = toTurbine
+    person ! enterShip
+    val movement = enterTurbine
 
     person ! movement
 
@@ -46,17 +46,17 @@ class PersonTest extends TestKit(ActorSystem("MySpec")) with ImplicitSender
   }
 
   test("person can exit ship, enter turbine, exit turbine, enter ship") {
-    person ! toShip
+    person ! enterShip
     person ! exitShip
-    person ! toTurbine
+    person ! enterTurbine
     person ! exitTurbine
-    person ! toShip
+    person ! enterShip
 
     probe.expectNoMessage()
   }
 
-  private def toTurbine = Movement(LocalDateTime.now(), TurbineId("1"), personId, Enter)
+  private def enterTurbine = Movement(LocalDateTime.now(), TurbineId("1"), personId, Enter)
   private def exitTurbine = Movement(LocalDateTime.now(), TurbineId("1"), personId, Exit)
-  private def toShip = Movement(LocalDateTime.now, VesselId("1"), personId, Enter)
+  private def enterShip = Movement(LocalDateTime.now, VesselId("1"), personId, Enter)
   private def exitShip = Movement(LocalDateTime.now, VesselId("1"), personId, Exit)
 }

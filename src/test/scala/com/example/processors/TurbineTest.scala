@@ -58,7 +58,41 @@ class TurbineTest extends TestKit(ActorSystem("MySpec")) with ImplicitSender
     expectMsg(EventError(timestamp, turbineId, None, "Turbine is broken for more than 4 hours", Open))
   }
 
+  test("Turbine starts working after it is broken") {
+    turbine ! broken
+    receiveN(2)
+
+    turbine ! working
+    expectMsg(ClearReminders)
+  }
+
+  test("Turbine starts working after it is broken and technician enters") {
+    turbine ! broken
+    receiveN(2)
+
+    turbine ! enter
+    receiveN(1)
+
+    turbine ! working
+    expectMsg(ClearReminders)
+  }
+
+  test("Turbine starts working after it is broken and technician enters then exits") {
+    turbine ! broken
+    receiveN(2)
+
+    turbine ! enter
+    receiveN(1)
+
+    turbine ! exit
+    receiveN(1)
+
+    turbine ! working
+    expectMsg(ClearReminders)
+  }
+
   private def enter = Movement(LocalDateTime.now(), turbineId, personId, Enter)
   private def exit = Movement(LocalDateTime.now(), turbineId, personId, Exit)
   private def broken = StatusUpdate(LocalDateTime.now(), turbineId, Broken)
+  private def working = StatusUpdate(LocalDateTime.now(), turbineId, Working)
 }

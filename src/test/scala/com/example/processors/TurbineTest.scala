@@ -11,7 +11,7 @@ import org.scalatest._
 import scala.concurrent.duration.Duration.Undefined
 
 class TurbineTest extends TestKit(ActorSystem("MySpec")) with ImplicitSender
-  with FunSuiteLike with Matchers with BeforeAndAfter with BeforeAndAfterAll {
+  with FunSuiteLike with Matchers with BeforeAndAfter with BeforeAndAfterAll with OneInstancePerTest {
 
   override def afterAll: Unit = {
     TestKit.shutdownActorSystem(system)

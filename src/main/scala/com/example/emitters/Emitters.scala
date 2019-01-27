@@ -10,7 +10,7 @@ import com.example.emitters.Emitters.Read
 import scala.PartialFunction.empty
 import scala.collection.immutable.Set
 
-class Emitters(master: ActorRef) extends Actor {
+class Emitters extends Actor {
 
   override def receive: Receive = empty
 
@@ -25,7 +25,7 @@ class Emitters(master: ActorRef) extends Actor {
   def onRead(refs: Set[ActorRef], minTimestamp: LocalDateTime): Unit = {
     if (refs.isEmpty) {
       context.become(emitting)
-      master ! Start(minTimestamp)
+      context.parent ! Start(minTimestamp)
     }
     else {
       context.become(reading(refs, minTimestamp))
@@ -39,13 +39,13 @@ class Emitters(master: ActorRef) extends Actor {
 
   private val emitting: Receive = {
     case tick: Tick => context.children.foreach(_.forward(tick))
-    case event: Event => master.forward(event)
+    case event: Event => context.parent.forward(event)
   }
 
   private def min(a: LocalDateTime, b: LocalDateTime) = if (a.compareTo(b) < 0) a else b
 }
 
 object Emitters {
-  def props(listener: ActorRef): Props = Props(new Emitters(listener))
+  val props: Props = Props[Emitters]
   case class Read(minTimestamp: LocalDateTime)
 }

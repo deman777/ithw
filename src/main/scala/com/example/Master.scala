@@ -11,7 +11,7 @@ class Master extends Actor {
   override def receive: Receive = empty
   override def preStart(): Unit = {
     val processors = context.system.actorOf(Processors.props, "processors")
-    val emitters = context.system.actorOf(Emitters.props(self), "emitters")
+    val emitters = context.system.actorOf(Emitters.props, "emitters")
     val clock = context.system.actorOf(Clock.props, "clock")
     val reminders = context.system.actorOf(Reminder.props, "reminders")
     context.become({

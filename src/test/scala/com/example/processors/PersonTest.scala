@@ -4,7 +4,6 @@ import java.time.LocalDateTime
 
 import akka.actor.{ActorRef, ActorSystem}
 import akka.testkit.{ImplicitSender, TestKit, TestProbe}
-import com.example.ErrorPrinter.{Closed, EventError}
 import com.example._
 import org.scalatest._
 
@@ -31,7 +30,7 @@ class PersonTest extends TestKit(ActorSystem("MySpec")) with ImplicitSender
 
     person ! movement
 
-    probe.expectMsg(EventError(movement.timestamp, movement.location.asInstanceOf[TurbineId], personId,
+    probe.expectMsg(EventError(movement.timestamp, movement.location.asInstanceOf[TurbineId], Some(personId),
       "Can not enter turbine without leaving ship", Closed))
   }
 
@@ -41,7 +40,7 @@ class PersonTest extends TestKit(ActorSystem("MySpec")) with ImplicitSender
 
     person ! movement
 
-    probe.expectMsg(EventError(movement.timestamp, movement.location.asInstanceOf[TurbineId], personId,
+    probe.expectMsg(EventError(movement.timestamp, movement.location.asInstanceOf[TurbineId], Some(personId),
       "Can not exit turbine without entering it", Closed))
   }
 

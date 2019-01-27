@@ -3,7 +3,7 @@ package com.example.processors
 import java.time.LocalDateTime
 
 import akka.actor.{Actor, Props}
-import com.example.ErrorPrinter.{Closed, EventError}
+import com.example.Closed
 import com.example._
 
 class Person(personId: PersonId) extends Actor {
@@ -29,7 +29,7 @@ class Person(personId: PersonId) extends Actor {
       context.become(after(movement))
   }
   private def error(timestamp: LocalDateTime, turbineId: TurbineId, message: String): Unit = {
-    context.parent ! EventError(timestamp, turbineId, personId, message, Closed)
+    context.parent ! EventError(timestamp, turbineId, Some(personId), message, Closed)
   }
 }
 

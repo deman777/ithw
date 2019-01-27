@@ -1,10 +1,13 @@
 package com.example.processors
 
 import akka.actor.{Actor, Props}
-import com.example.TurbineId
+import com.example.{EventError, Open, StatusUpdate, TurbineId}
 
 class Turbine(id: TurbineId) extends Actor {
-  override def receive: Receive = PartialFunction.empty
+  override def receive: Receive = {
+    case m: StatusUpdate =>
+      context.parent ! EventError(m.timestamp, m.turbine, Option.empty, "Turbine is broken", Open)
+  }
 }
 
 object Turbine {

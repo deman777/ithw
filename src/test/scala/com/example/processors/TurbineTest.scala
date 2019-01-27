@@ -33,9 +33,10 @@ class TurbineTest extends TestKit(ActorSystem("MySpec")) with ImplicitSender
 
   test("A technician exits a turbine without having repaired the turbine") {
     turbine ! broken
-    receiveOne(Undefined)
+    receiveN(2)
 
     turbine ! enter
+    expectMsg(ClearReminders)
 
     turbine ! exit
     expectMsg(Remind(ofMinutes(3), IsBrokenAfterTechnician(personId)))

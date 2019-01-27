@@ -12,7 +12,7 @@ class Turbines extends Actor {
 
   private def turbine(turbineId: TurbineId) = {
     val name = turbineId.id
-    context.child(name).getOrElse(context.system.actorOf(Turbine.props, name))
+    context.child(name).getOrElse(context.system.actorOf(Turbine.props(turbineId), name))
   }
 }
 

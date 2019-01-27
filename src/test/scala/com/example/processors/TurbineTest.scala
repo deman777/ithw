@@ -1,9 +1,10 @@
 package com.example.processors
 
+import java.time.Duration.ofMinutes
 import java.time.LocalDateTime
 
 import akka.actor.{ActorRef, ActorSystem}
-import akka.testkit.{ImplicitSender, TestKit, TestProbe}
+import akka.testkit.{ImplicitSender, TestKit}
 import com.example._
 import org.scalatest._
 
@@ -16,12 +17,12 @@ class TurbineTest extends TestKit(ActorSystem("MySpec")) with ImplicitSender
     TestKit.shutdownActorSystem(system)
   }
 
-  var turbineId: TurbineId = _
+  var turbineId: TurbineId = TurbineId("1")
+  var personId: PersonId = PersonId("1")
   var turbine: ActorRef = _
 
   before {
-    turbineId = TurbineId("1")
-    turbine = childActorOf(Turbine.props)
+    turbine = childActorOf(Turbine.props(turbineId))
   }
 
   test("Turbine stops working") {
@@ -34,12 +35,18 @@ class TurbineTest extends TestKit(ActorSystem("MySpec")) with ImplicitSender
     turbine ! broken
     receiveOne(Undefined)
 
-    val m = exit
-    turbine ! m
+    turbine ! enter
 
-    expectMsg(EventError(m.timestamp, turbineId, Some(m.person), "Technician did not repair turbine", Open))
+    turbine ! exit
+    expectMsg(Remind(ofMinutes(3), IsBrokenAfterTechnician(personId)))
+
+    val timestamp = LocalDateTime.now()
+    turbine ! Reminder(timestamp, IsBrokenAfterTechnician(personId))
+
+    expectMsg(EventError(timestamp, turbineId, Some(personId), "Technician did not repair turbine", Open))
   }
 
-  private def exit = Movement(LocalDateTime.now(), turbineId, PersonId("1"), Exit)
+  private def enter = Movement(LocalDateTime.now(), turbineId, personId, Enter)
+  private def exit = Movement(LocalDateTime.now(), turbineId, personId, Exit)
   private def broken = StatusUpdate(LocalDateTime.now(), turbineId, Broken)
 }

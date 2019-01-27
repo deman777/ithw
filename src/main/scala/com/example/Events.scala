@@ -22,7 +22,7 @@ trait Event {
 case class Movement(
   timestamp: LocalDateTime,
   location: Location,
-  person: PersonId,
+  personId: PersonId,
   direction: Direction
 ) extends Event
 

@@ -1,7 +1,7 @@
 package com.example.processors
 
 import akka.actor.{Actor, Props}
-import com.example.{Movement, StatusUpdate}
+import com.example.{LogError, Movement, StatusUpdate, ToReminders}
 
 class Processors extends Actor {
   private val people = context.system.actorOf(People.props, "people")
@@ -13,6 +13,10 @@ class Processors extends Actor {
     case movement: Movement =>
       people.forward(movement)
       turbines.forward(movement)
+    case toReminders: ToReminders =>
+      context.parent.forward(toReminders)
+    case logError: LogError =>
+      context.parent.forward(logError)
   }
 }
 

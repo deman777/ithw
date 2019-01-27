@@ -12,10 +12,10 @@ class Turbine(turbineId: TurbineId) extends Actor {
 
   private def onBroken(statusUpdate: StatusUpdate): Unit = {
     context.parent ! EventError(statusUpdate.timestamp, turbineId, None, "Turbine is broken", Open)
-    context.parent ! Remind(ofHours(4), IsBrokenFourHours)
+    context.parent ! Remind(ofHours(4), BrokenFourHours)
     context.become({
       case Movement(_, _, _, Enter) => onEnter()
-      case r@Reminder(_, IsBrokenFourHours) => onBrokenFourHours(r)
+      case r@Reminder(_, BrokenFourHours) => onBrokenFourHours(r)
       case StatusUpdate(_, _, Working) => onWorking()
     })
   }
@@ -33,9 +33,9 @@ class Turbine(turbineId: TurbineId) extends Actor {
   }
 
   private def onExit(movement: Movement): Unit = {
-    context.parent ! Remind(ofMinutes(3), IsBrokenAfterTechnician(movement.personId))
+    context.parent ! Remind(ofMinutes(3), BrokenAfterTechnician(movement.personId))
     context.become({
-      case Reminder(timestamp, IsBrokenAfterTechnician(personId)) =>
+      case Reminder(timestamp, BrokenAfterTechnician(personId)) =>
         context.parent ! EventError(timestamp, turbineId, Some(personId), "Technician did not repair turbine", Open)
       case StatusUpdate(_, _, Working) => onWorking()
     })
@@ -57,7 +57,7 @@ object Turbine {
   def props(turbineId: TurbineId): Props = Props(new Turbine(turbineId))
 }
 
-case class IsBrokenAfterTechnician(personId: PersonId)
-case object IsBrokenFourHours
+case class BrokenAfterTechnician(personId: PersonId)
+case object BrokenFourHours
 
 

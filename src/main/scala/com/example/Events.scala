@@ -19,14 +19,14 @@ case object Broken extends Status
 trait Event {
   val timestamp: LocalDateTime
 }
-case class PersonMovement(
+case class Movement(
   timestamp: LocalDateTime,
   location: Location,
   person: PersonId,
   direction: Direction
 ) extends Event
 
-case class TurbineStatusUpdate(
+case class StatusUpdate(
   timestamp: LocalDateTime,
   turbine: TurbineId,
   activePower: BigDecimal,

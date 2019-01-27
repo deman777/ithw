@@ -1,12 +1,12 @@
 package com.example.processors
 
 import akka.actor.{Actor, Props}
-import com.example.{PersonId, PersonMovement}
+import com.example.{PersonId, Movement}
 
 class People extends Actor {
 
   override def receive: Receive = {
-    case m@PersonMovement(_, _, personId: PersonId, _) => person(personId) ! m
+    case m@Movement(_, _, personId: PersonId, _) => person(personId) ! m
   }
 
   private def person(personId: PersonId) = {

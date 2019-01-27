@@ -3,9 +3,9 @@ package com.example.emitters
 import akka.actor.Props
 import com.example._
 
-class MovementsEmitter extends AbstractEventsEmitter[PersonMovement] {
+class MovementsEmitter extends AbstractEventsEmitter[Movement] {
   protected override val name: String = "movements"
-  protected override val toEvent: Map[String, String] => PersonMovement = toMovement
+  protected override val toEvent: Map[String, String] => Movement = toMovement
 
   private def parseLocation(location: String) = location match {
     case _ if location.startsWith("Vessel") => VesselId(location.split("\\s")(1))
@@ -18,7 +18,7 @@ class MovementsEmitter extends AbstractEventsEmitter[PersonMovement] {
   }
 
   private def toMovement(data: Map[String, String]) = {
-    PersonMovement(
+    Movement(
       Time.parse(data("Date"), "dd.MM.yyyy HH:mm"),
       parseLocation(data("Location")),
       PersonId(data("Person")),

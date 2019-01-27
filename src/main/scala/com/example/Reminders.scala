@@ -5,7 +5,7 @@ import java.time.LocalDateTime
 import akka.actor.{Actor, ActorRef, Props}
 import com.example.Clock.Tick
 
-final class Reminders(master: ActorRef) extends Actor {
+final class Reminders extends Actor {
 
   override def receive: Receive = withState(Seq.empty, LocalDateTime.MIN)
 
@@ -24,7 +24,7 @@ final class Reminders(master: ActorRef) extends Actor {
 }
 
 object Reminder {
-  def props(master: ActorRef): Props = Props(new Reminders(master))
+  val props: Props = Props[Reminders]
 }
 
 trait ToReminders

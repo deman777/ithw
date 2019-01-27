@@ -39,8 +39,8 @@ abstract class AbstractEventsEmitter[E <: Event] extends Actor {
   protected val toEvent: Map[String, String] => E
 
   private def withEvents(events: Seq[Event]): Receive = {
-    case Tick(now) =>
-      val (nowEvents, futureEvents) = events.span(_.timestamp.compareTo(now) <= 0)
+    case Tick(tick) =>
+      val (nowEvents, futureEvents) = events.span(_.timestamp.compareTo(tick) <= 0)
       nowEvents.foreach(context.parent ! _)
       context.become(withEvents(futureEvents))
   }

@@ -9,10 +9,9 @@ class People extends Actor {
     case m@Movement(_, _, personId: PersonId, _) => person(personId) ! m
   }
 
-  private def person(personId: PersonId) = {
-    val name = personId.id
-    context.child(name).getOrElse(context.system.actorOf(Person.props(personId), name))
-  }
+  private def person(personId: PersonId) =
+    context.child(personId.id)
+      .getOrElse(context.system.actorOf(Person.props(personId), personId.id))
 }
 
 object People {

@@ -10,10 +10,9 @@ class Turbines extends Actor {
     case m@Movement(_, turbineId: TurbineId, _, _) => turbine(turbineId) ! m
   }
 
-  private def turbine(turbineId: TurbineId) = {
+  private def turbine(turbineId: TurbineId) =
     context.child(turbineId.id)
       .getOrElse(context.system.actorOf(Turbine.props(turbineId), turbineId.id))
-  }
 }
 
 object Turbines {

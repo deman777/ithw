@@ -1,13 +1,15 @@
 package com.example.processors
 
-import akka.actor.{Actor, ActorRef, Props}
+import akka.actor.{Actor, Props}
 import com.example._
 
-class Turbines(master: ActorRef) extends Actor {
+class Turbines extends Actor {
 
   override def receive: Receive = {
     case m@StatusUpdate(_, turbineId: TurbineId, _) => turbine(turbineId) ! m
     case m@Movement(_, turbineId: TurbineId, _, _) => turbine(turbineId) ! m
+    case toReminders: ToReminders => context.parent.forward(toReminders)
+    case logError: LogError => context.parent.forward(logError)
   }
 
   private def turbine(turbineId: TurbineId) = {
@@ -17,7 +19,7 @@ class Turbines(master: ActorRef) extends Actor {
 }
 
 object Turbines {
-  def props(master: ActorRef): Props = Props(new Turbines(master))
+  def props: Props = Props[Turbines]
 }
 
 

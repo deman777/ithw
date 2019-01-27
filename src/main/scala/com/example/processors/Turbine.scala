@@ -57,8 +57,8 @@ class Turbine(turbineId: TurbineId) extends Actor {
     context.parent ! Remind(in, message)
   }
 
-  private def reportError(eventError: LogError): Unit = {
-    context.parent ! eventError
+  private def reportError(logError: LogError): Unit = {
+    context.parent ! logError
   }
 }
 

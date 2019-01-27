@@ -45,6 +45,16 @@ class PersonTest extends TestKit(ActorSystem("MySpec")) with ImplicitSender
       "Can not exit turbine without entering it", Closed))
   }
 
+  test("person can exit ship, enter turbine, exit turbine, enter ship") {
+    person ! toShip
+    person ! exitShip
+    person ! toTurbine
+    person ! exitTurbine
+    person ! toShip
+
+    probe.expectNoMessage()
+  }
+
   private def toTurbine = Movement(LocalDateTime.now(), TurbineId("1"), personId, Enter)
   private def exitTurbine = Movement(LocalDateTime.now(), TurbineId("1"), personId, Exit)
   private def toShip = Movement(LocalDateTime.now, VesselId("1"), personId, Enter)

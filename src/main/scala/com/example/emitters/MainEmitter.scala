@@ -38,7 +38,6 @@ class MainEmitter extends Actor with ActorLogging {
   ): Unit = {
     if (readingEmitters.isEmpty) startEmitting(readyEmitters, startTimestamp)
     else {
-      log.info("Continue to read with refs")
       context.become(readingEvents(readingEmitters, readyEmitters, startTimestamp))
     }
   }

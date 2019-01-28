@@ -22,7 +22,6 @@ class Turbine(turbineId: TurbineId) extends Actor with ActorLogging {
   }
 
   private def onBrokenFourHours(r: RemindingYou): Unit = {
-    log.info("Got reminding about broken for 4 hours")
     logError(ErrorEvent(r.timestamp, turbineId, None, "Turbine is broken for more than 4 hours", Open))
     context.become({
       case Movement(timestamp, _: TurbineId, personId, Enter) =>
@@ -44,7 +43,6 @@ class Turbine(turbineId: TurbineId) extends Actor with ActorLogging {
     remind(ofMinutes(3), BrokenAfterTechnician(movement.personId))
     context.become({
       case RemindingYou(timestamp, BrokenAfterTechnician(personId)) =>
-        log.info("Got reminding about broken after technician left " + personId)
         logError(ErrorEvent(timestamp, turbineId, Some(personId), "Technician did not repair turbine", Open))
       case StatusUpdate(_, _, Working) => onWorking()
     })

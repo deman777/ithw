@@ -11,6 +11,7 @@ import com.example.Clock.Tick
 import com.example.Event
 import com.example.emitters.Emitters.Read
 
+import scala.collection.immutable.Stream.Empty
 import scala.concurrent.ExecutionContextExecutor
 import scala.util.{Failure, Success}
 
@@ -45,7 +46,15 @@ abstract class AbstractEventsEmitter[E <: Event] extends Actor with ActorLogging
     case Tick(tick) =>
       val (nowEvents, futureEvents) = events.span(_.timestamp.compareTo(tick) <= 0)
       nowEvents.foreach(context.parent ! _)
-      context.become(withEvents(futureEvents))
+  }
+
+  def afterTick(events: Seq[Event]): Unit = {
+    events match {
+      case Empty =>
+        log.info("My events finished")
+        context.parent ! EmitterEventsFinished
+      case _ => context.become(withEvents(events))
+    }
   }
 }
 

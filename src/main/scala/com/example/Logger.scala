@@ -6,7 +6,7 @@ import akka.actor.{Actor, ActorLogging, Props}
 
 class Logger extends Actor with ActorLogging {
   override def receive: Receive = {
-    case error: LogError =>
+    case error: ErrorEvent =>
       log.error(error.toString)
   }
 }
@@ -26,7 +26,7 @@ case object Closed extends ErrorState {
   override val name: String = "closed"
 }
 
-case class LogError(
+case class ErrorEvent(
   date: LocalDateTime,
   turbine: TurbineId,
   person: Option[PersonId],

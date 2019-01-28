@@ -9,7 +9,7 @@ class Turbines extends Actor {
     case m@StatusUpdate(_, turbineId: TurbineId, _) => turbine(turbineId) ! m
     case m@Movement(_, turbineId: TurbineId, _, _) => turbine(turbineId) ! m
     case toReminders: ToReminders => context.parent.forward(toReminders)
-    case logError: LogError => context.parent.forward(logError)
+    case logError: ErrorEvent => context.parent.forward(logError)
   }
 
   private def turbine(turbineId: TurbineId) = {

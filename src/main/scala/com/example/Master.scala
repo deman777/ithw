@@ -27,7 +27,7 @@ class Master extends Actor with ActorLogging {
     case toReminders: ToReminders =>
       reminders.forward(toReminders)
 
-    case logError: LogError =>
+    case logError: ErrorEvent =>
       logger.forward(logError)
 
     case Stop =>

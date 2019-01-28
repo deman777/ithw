@@ -1,7 +1,7 @@
 package com.example.processors
 
 import akka.actor.{Actor, Props}
-import com.example.{LogError, Movement, StatusUpdate, ToReminders}
+import com.example.{ErrorEvent, Movement, StatusUpdate, ToReminders}
 
 class Processors extends Actor {
 
@@ -16,7 +16,7 @@ class Processors extends Actor {
       turbines.forward(movement)
     case toReminders: ToReminders =>
       context.parent.forward(toReminders)
-    case logError: LogError =>
+    case logError: ErrorEvent =>
       context.parent.forward(logError)
   }
 }

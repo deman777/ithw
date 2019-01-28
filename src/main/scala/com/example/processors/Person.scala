@@ -32,7 +32,7 @@ class Person(personId: PersonId) extends Actor {
   }
 
   private def error(timestamp: LocalDateTime, turbineId: TurbineId, message: String): Unit = {
-    context.parent ! LogError(timestamp, turbineId, Some(personId), message, Closed)
+    context.parent ! ErrorEvent(timestamp, turbineId, Some(personId), message, Closed)
   }
 }
 

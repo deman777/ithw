@@ -12,7 +12,7 @@ class Turbine(turbineId: TurbineId) extends Actor with ActorLogging {
   }
 
   private def onBroken(statusUpdate: StatusUpdate): Unit = {
-    logError(LogError(statusUpdate.timestamp, turbineId, None, "Turbine is broken", Open))
+    logError(ErrorEvent(statusUpdate.timestamp, turbineId, None, "Turbine is broken", Open))
     remind(ofHours(4), BrokenFourHours)
     context.become({
       case Movement(_, _, _, Enter) => onEnter()
@@ -23,10 +23,10 @@ class Turbine(turbineId: TurbineId) extends Actor with ActorLogging {
 
   private def onBrokenFourHours(r: RemindingYou): Unit = {
     log.info("Got reminding about broken for 4 hours")
-    logError(LogError(r.timestamp, turbineId, None, "Turbine is broken for more than 4 hours", Open))
+    logError(ErrorEvent(r.timestamp, turbineId, None, "Turbine is broken for more than 4 hours", Open))
     context.become({
       case Movement(timestamp, _: TurbineId, personId, Enter) =>
-        logError(LogError(timestamp, turbineId, Some(personId), "Turbine is broken for more than 4 hours", Closed))
+        logError(ErrorEvent(timestamp, turbineId, Some(personId), "Turbine is broken for more than 4 hours", Closed))
         onEnter()
       case StatusUpdate(_, _, Working) => onWorking()
     })
@@ -45,7 +45,7 @@ class Turbine(turbineId: TurbineId) extends Actor with ActorLogging {
     context.become({
       case RemindingYou(timestamp, BrokenAfterTechnician(personId)) =>
         log.info("Got reminding about broken after technician left " + personId)
-        logError(LogError(timestamp, turbineId, Some(personId), "Technician did not repair turbine", Open))
+        logError(ErrorEvent(timestamp, turbineId, Some(personId), "Technician did not repair turbine", Open))
       case StatusUpdate(_, _, Working) => onWorking()
     })
   }
@@ -65,7 +65,7 @@ class Turbine(turbineId: TurbineId) extends Actor with ActorLogging {
     context.parent ! RemindMe(in, message)
   }
 
-  private def logError(errorEvent: LogError): Unit = {
+  private def logError(errorEvent: ErrorEvent): Unit = {
     context.parent ! errorEvent
   }
 }

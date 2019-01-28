@@ -30,7 +30,7 @@ class PersonTest extends TestKit(ActorSystem("MySpec")) with ImplicitSender
 
     person ! movement
 
-    probe.expectMsg(LogError(movement.timestamp, movement.location.asInstanceOf[TurbineId], Some(personId),
+    probe.expectMsg(ErrorEvent(movement.timestamp, movement.location.asInstanceOf[TurbineId], Some(personId),
       "Can not enter turbine without leaving ship", Closed))
   }
 
@@ -40,7 +40,7 @@ class PersonTest extends TestKit(ActorSystem("MySpec")) with ImplicitSender
 
     person ! movement
 
-    probe.expectMsg(LogError(movement.timestamp, movement.location.asInstanceOf[TurbineId], Some(personId),
+    probe.expectMsg(ErrorEvent(movement.timestamp, movement.location.asInstanceOf[TurbineId], Some(personId),
       "Can not exit turbine without entering it", Closed))
   }
 

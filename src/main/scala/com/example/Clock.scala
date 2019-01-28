@@ -34,7 +34,6 @@ class Clock extends Actor with ActorLogging {
   }
 
   private def tick(time: LocalDateTime): Unit = {
-    log.info(s"Tick $time")
     context.parent ! Tick(time)
   }
 }

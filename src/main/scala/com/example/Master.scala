@@ -14,17 +14,23 @@ class Master extends Actor with ActorLogging {
   private val logger = context.actorOf(Logger.props, "logger")
 
   override def receive: Receive = {
+
     case start: Start =>
       clock.forward(start)
+
     case tick: Tick =>
       emitters.forward(tick)
       reminders.forward(tick)
+
     case event: Event =>
       processors.forward(event)
+
     case toReminders: ToReminders =>
       reminders.forward(toReminders)
+
     case logError: LogError =>
       logger.forward(logError)
+
     case AllEventsFinished =>
       clock ! Stop
       log.info("here i should shut down gracefully")

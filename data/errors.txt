@@ -1,0 +1,2065 @@
+{
+  "date": "2015-11-23T03:12"
+  "turbine": "B3A",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-23T04:14"
+  "turbine": "D4J",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-23T04:28"
+  "turbine": "H5P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-23T04:42"
+  "turbine": "A3A",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-23T06:08"
+  "turbine": "E6R",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-23T06:25"
+  "turbine": "H15F",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-23T07:12"
+  "turbine": "B3A",
+  "person": "",
+  "error": "Turbine is broken for more than 4 hours",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-23T07:41"
+  "turbine": "H2N",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-23T07:44"
+  "turbine": "F10H_PR",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-23T07:47"
+  "turbine": "D7B",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-23T08:14"
+  "turbine": "D4J",
+  "person": "",
+  "error": "Turbine is broken for more than 4 hours",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-23T08:24"
+  "turbine": "D5A",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-23T08:28"
+  "turbine": "H5P",
+  "person": "",
+  "error": "Turbine is broken for more than 4 hours",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-23T08:32"
+  "turbine": "H8J",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-23T08:34"
+  "turbine": "G9K",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-23T08:41"
+  "turbine": "K6K",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-23T08:42"
+  "turbine": "A3A",
+  "person": "",
+  "error": "Turbine is broken for more than 4 hours",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-23T08:56"
+  "turbine": "D1Q",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-23T09:30"
+  "turbine": "H20F",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-23T09:59"
+  "turbine": "E11B",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-23T10:47"
+  "turbine": "K2M",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-23T11:20"
+  "turbine": "D4J",
+  "person": "P59",
+  "error": "Turbine is broken for more than 4 hours",
+  "error_state": "closed",
+}
+{
+  "date": "2015-11-23T11:41"
+  "turbine": "H2N",
+  "person": "",
+  "error": "Turbine is broken for more than 4 hours",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-23T11:52"
+  "turbine": "B9C",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-23T12:06"
+  "turbine": "E7J",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-23T12:32"
+  "turbine": "H8J",
+  "person": "",
+  "error": "Turbine is broken for more than 4 hours",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-23T12:34"
+  "turbine": "G9K",
+  "person": "",
+  "error": "Turbine is broken for more than 4 hours",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-23T12:41"
+  "turbine": "K6K",
+  "person": "",
+  "error": "Turbine is broken for more than 4 hours",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-23T12:56"
+  "turbine": "D1Q",
+  "person": "",
+  "error": "Turbine is broken for more than 4 hours",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-23T13:30"
+  "turbine": "H20F",
+  "person": "",
+  "error": "Turbine is broken for more than 4 hours",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-23T14:04"
+  "turbine": "D7B",
+  "person": "P18",
+  "error": "Technician did not repair turbine",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-23T15:52"
+  "turbine": "B9C",
+  "person": "",
+  "error": "Turbine is broken for more than 4 hours",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-23T15:52"
+  "turbine": "Location",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-23T16:04"
+  "turbine": "A1A",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-23T17:24"
+  "turbine": "E11B",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-23T18:16"
+  "turbine": "F10H_PR",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-23T19:05"
+  "turbine": "D4J",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-23T19:31"
+  "turbine": "H15F",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-23T19:39"
+  "turbine": "H4P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-23T19:52"
+  "turbine": "Location",
+  "person": "",
+  "error": "Turbine is broken for more than 4 hours",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-23T20:04"
+  "turbine": "A1A",
+  "person": "",
+  "error": "Turbine is broken for more than 4 hours",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-23T20:27"
+  "turbine": "G8J",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-23T20:36"
+  "turbine": "C5A",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-23T21:07"
+  "turbine": "E6R",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-23T22:26"
+  "turbine": "F3P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-23T22:53"
+  "turbine": "D7B",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-24T00:33"
+  "turbine": "H15F",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-24T00:55"
+  "turbine": "E7J",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-24T01:17"
+  "turbine": "H4P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-24T01:55"
+  "turbine": "H6Q",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-24T02:06"
+  "turbine": "G4P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-24T02:18"
+  "turbine": "F10H_PR",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-24T03:06"
+  "turbine": "E6R",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-24T04:35"
+  "turbine": "H4P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-24T05:04"
+  "turbine": "H15F",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-24T05:12"
+  "turbine": "E8J",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-24T05:45"
+  "turbine": "E1P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-24T06:41"
+  "turbine": "E6R",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-24T06:41"
+  "turbine": "F10H_PR",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-24T06:42"
+  "turbine": "G4P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-24T07:39"
+  "turbine": "E11B",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-24T09:21"
+  "turbine": "E14D",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-24T09:47"
+  "turbine": "B4B",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-24T11:39"
+  "turbine": "F3P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-24T12:43"
+  "turbine": "D7B",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-24T13:14"
+  "turbine": "F10H_PR",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-24T13:21"
+  "turbine": "E14D",
+  "person": "",
+  "error": "Turbine is broken for more than 4 hours",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-24T13:47"
+  "turbine": "B4B",
+  "person": "",
+  "error": "Turbine is broken for more than 4 hours",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-24T14:45"
+  "turbine": "C5A",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-24T15:18"
+  "turbine": "F8J",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-24T15:31"
+  "turbine": "D7B",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-24T16:02"
+  "turbine": "J5P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-24T18:24"
+  "turbine": "K2M",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-24T19:18"
+  "turbine": "F8J",
+  "person": "",
+  "error": "Turbine is broken for more than 4 hours",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-24T20:02"
+  "turbine": "J5P",
+  "person": "",
+  "error": "Turbine is broken for more than 4 hours",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-24T20:19"
+  "turbine": "D5A",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-24T22:37"
+  "turbine": "D4J",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-24T23:11"
+  "turbine": "E8J",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-25T00:09"
+  "turbine": "D5A",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-25T00:25"
+  "turbine": "G8J",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-25T00:50"
+  "turbine": "D4J",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-25T01:44"
+  "turbine": "H15F",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-25T03:22"
+  "turbine": "H7R",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-25T06:03"
+  "turbine": "C4A",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-25T06:10"
+  "turbine": "H4P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-25T06:11"
+  "turbine": "H7R",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-25T06:53"
+  "turbine": "E6R",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-25T07:00"
+  "turbine": "F3P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-25T07:12"
+  "turbine": "H15F",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-25T07:32"
+  "turbine": "E8J",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-25T07:57"
+  "turbine": "E11B",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-25T10:03"
+  "turbine": "C4A",
+  "person": "",
+  "error": "Turbine is broken for more than 4 hours",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-25T11:32"
+  "turbine": "K2M",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-25T11:55"
+  "turbine": "E8J",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-25T12:18"
+  "turbine": "D4J",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-25T12:44"
+  "turbine": "F10H_PR",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-25T15:04"
+  "turbine": "E1P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-25T15:07"
+  "turbine": "K2M",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-25T15:34"
+  "turbine": "D5A",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-25T18:29"
+  "turbine": "G8J",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-25T18:45"
+  "turbine": "E1P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-25T20:25"
+  "turbine": "F10H_PR",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-25T20:34"
+  "turbine": "K2M",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-25T22:02"
+  "turbine": "D7B",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-25T22:43"
+  "turbine": "H6Q",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-25T23:05"
+  "turbine": "C5A",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-25T23:18"
+  "turbine": "G4P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-26T00:10"
+  "turbine": "D5A",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-26T00:14"
+  "turbine": "H15F",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-26T01:15"
+  "turbine": "D4J",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-26T03:20"
+  "turbine": "H4P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-26T03:38"
+  "turbine": "E8J",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-26T03:44"
+  "turbine": "E6R",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-26T06:19"
+  "turbine": "H6Q",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-26T07:25"
+  "turbine": "E1P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-26T09:27"
+  "turbine": "E1P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-26T10:10"
+  "turbine": "H20F",
+  "person": "P23",
+  "error": "Turbine is broken for more than 4 hours",
+  "error_state": "closed",
+}
+{
+  "date": "2015-11-26T10:11"
+  "turbine": "B4B",
+  "person": "P96",
+  "error": "Turbine is broken for more than 4 hours",
+  "error_state": "closed",
+}
+{
+  "date": "2015-11-26T10:29"
+  "turbine": "B3A",
+  "person": "P79",
+  "error": "Turbine is broken for more than 4 hours",
+  "error_state": "closed",
+}
+{
+  "date": "2015-11-26T10:31"
+  "turbine": "A3A",
+  "person": "P53",
+  "error": "Turbine is broken for more than 4 hours",
+  "error_state": "closed",
+}
+{
+  "date": "2015-11-26T10:54"
+  "turbine": "A1A",
+  "person": "P88",
+  "error": "Turbine is broken for more than 4 hours",
+  "error_state": "closed",
+}
+{
+  "date": "2015-11-26T10:55"
+  "turbine": "C4A",
+  "person": "P89",
+  "error": "Turbine is broken for more than 4 hours",
+  "error_state": "closed",
+}
+{
+  "date": "2015-11-26T10:57"
+  "turbine": "H8J",
+  "person": "P48",
+  "error": "Turbine is broken for more than 4 hours",
+  "error_state": "closed",
+}
+{
+  "date": "2015-11-26T10:58"
+  "turbine": "D1Q",
+  "person": "P96",
+  "error": "Turbine is broken for more than 4 hours",
+  "error_state": "closed",
+}
+{
+  "date": "2015-11-26T11:13"
+  "turbine": "H6Q",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-26T11:24"
+  "turbine": "K6K",
+  "person": "P85",
+  "error": "Turbine is broken for more than 4 hours",
+  "error_state": "closed",
+}
+{
+  "date": "2015-11-26T11:55"
+  "turbine": "J5P",
+  "person": "P54",
+  "error": "Turbine is broken for more than 4 hours",
+  "error_state": "closed",
+}
+{
+  "date": "2015-11-26T13:05"
+  "turbine": "F8J",
+  "person": "P97",
+  "error": "Turbine is broken for more than 4 hours",
+  "error_state": "closed",
+}
+{
+  "date": "2015-11-26T13:55"
+  "turbine": "E14D",
+  "person": "P13",
+  "error": "Turbine is broken for more than 4 hours",
+  "error_state": "closed",
+}
+{
+  "date": "2015-11-26T13:55"
+  "turbine": "G9K",
+  "person": "P53",
+  "error": "Turbine is broken for more than 4 hours",
+  "error_state": "closed",
+}
+{
+  "date": "2015-11-26T14:10"
+  "turbine": "G4P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-26T14:52"
+  "turbine": "G8J",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-26T15:23"
+  "turbine": "H4P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-26T15:35"
+  "turbine": "B9C",
+  "person": "P54",
+  "error": "Turbine is broken for more than 4 hours",
+  "error_state": "closed",
+}
+{
+  "date": "2015-11-26T16:20"
+  "turbine": "C5A",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-26T16:35"
+  "turbine": "H5P",
+  "person": "P96",
+  "error": "Turbine is broken for more than 4 hours",
+  "error_state": "closed",
+}
+{
+  "date": "2015-11-26T17:09"
+  "turbine": "F3P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-26T17:13"
+  "turbine": "F10H_PR",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-26T17:45"
+  "turbine": "E1P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-26T17:57"
+  "turbine": "A3A",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-26T18:10"
+  "turbine": "G4P",
+  "person": "",
+  "error": "Turbine is broken for more than 4 hours",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-26T18:40"
+  "turbine": "D7B",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-26T18:54"
+  "turbine": "D5A",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-26T19:15"
+  "turbine": "E8J",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-26T20:11"
+  "turbine": "F8J",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-26T21:14"
+  "turbine": "D7B",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-26T22:34"
+  "turbine": "B3A",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-26T22:37"
+  "turbine": "F10H_PR",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-26T23:00"
+  "turbine": "D5A",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-26T23:07"
+  "turbine": "H4P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-26T23:37"
+  "turbine": "H8J",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-26T23:59"
+  "turbine": "G4P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-27T00:28"
+  "turbine": "H5P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-27T00:43"
+  "turbine": "A3A",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-27T01:59"
+  "turbine": "F3P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-27T02:03"
+  "turbine": "G4P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-27T02:54"
+  "turbine": "E14D",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-27T03:03"
+  "turbine": "G8J",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-27T03:24"
+  "turbine": "E7J",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-27T03:40"
+  "turbine": "D5A",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-27T03:51"
+  "turbine": "D7B",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-27T04:41"
+  "turbine": "E11B",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-27T05:24"
+  "turbine": "B4B",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-27T05:34"
+  "turbine": "D7B",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-27T05:44"
+  "turbine": "B9C",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-27T05:53"
+  "turbine": "E1P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-27T06:05"
+  "turbine": "A1A",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-27T06:54"
+  "turbine": "K6K",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-27T07:20"
+  "turbine": "H7R",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-27T07:57"
+  "turbine": "H8J",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-27T08:33"
+  "turbine": "D5A",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-27T09:16"
+  "turbine": "A1A",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-27T09:16"
+  "turbine": "F3P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-27T09:20"
+  "turbine": "J5P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-27T09:40"
+  "turbine": "G9K",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-27T10:50"
+  "turbine": "G4P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-27T11:20"
+  "turbine": "H2N",
+  "person": "P6",
+  "error": "Turbine is broken for more than 4 hours",
+  "error_state": "closed",
+}
+{
+  "date": "2015-11-27T11:33"
+  "turbine": "E1P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-27T12:01"
+  "turbine": "H7R",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-27T12:18"
+  "turbine": "C5A",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-27T14:16"
+  "turbine": "G8J",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-27T14:16"
+  "turbine": "F3P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-27T14:44"
+  "turbine": "H6Q",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-27T14:51"
+  "turbine": "J5P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-27T14:51"
+  "turbine": "E1P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-27T17:08"
+  "turbine": "E14D",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-27T17:14"
+  "turbine": "B4B",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-27T17:14"
+  "turbine": "B9C",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-27T17:23"
+  "turbine": "H8J",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-27T17:40"
+  "turbine": "E7J",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-27T17:41"
+  "turbine": "G9K",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-27T18:55"
+  "turbine": "H5P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-27T19:11"
+  "turbine": "G4P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-27T19:35"
+  "turbine": "C5A",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-27T20:51"
+  "turbine": "F3P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-27T20:52"
+  "turbine": "F10H_PR",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-27T21:36"
+  "turbine": "H20F",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-27T22:35"
+  "turbine": "E14D",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-27T22:41"
+  "turbine": "E1P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-27T22:47"
+  "turbine": "H6Q",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-27T22:56"
+  "turbine": "H7R",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-28T01:00"
+  "turbine": "A3A",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-28T01:27"
+  "turbine": "H7R",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-28T02:03"
+  "turbine": "A1A",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-28T02:05"
+  "turbine": "E11B",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-28T02:07"
+  "turbine": "H20F",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-28T02:25"
+  "turbine": "D5A",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-28T03:07"
+  "turbine": "G8J",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-28T04:47"
+  "turbine": "H8J",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-28T04:55"
+  "turbine": "B9C",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-28T04:56"
+  "turbine": "H7R",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-28T05:15"
+  "turbine": "J5P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-28T06:13"
+  "turbine": "B3A",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-28T06:24"
+  "turbine": "E8J",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-28T06:58"
+  "turbine": "F10H_PR",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-28T06:59"
+  "turbine": "E11B",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-28T07:30"
+  "turbine": "H20F",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-28T10:04"
+  "turbine": "G4P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-28T10:07"
+  "turbine": "H6Q",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-28T10:33"
+  "turbine": "C5A",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-28T10:36"
+  "turbine": "D4J",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-28T11:39"
+  "turbine": "K2M",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-28T11:46"
+  "turbine": "G8J",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-28T11:55"
+  "turbine": "E7J",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-28T12:11"
+  "turbine": "H8J",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-28T12:12"
+  "turbine": "D5A",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-28T12:39"
+  "turbine": "D7B",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-28T13:56"
+  "turbine": "F3P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-28T14:07"
+  "turbine": "D1Q",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-28T14:09"
+  "turbine": "C5A",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-28T14:16"
+  "turbine": "E14D",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-28T14:37"
+  "turbine": "H7R",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-28T15:51"
+  "turbine": "H15F",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-28T16:21"
+  "turbine": "H4P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-28T17:09"
+  "turbine": "G8J",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-28T17:50"
+  "turbine": "D5A",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-28T17:56"
+  "turbine": "A1A",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-28T19:04"
+  "turbine": "H7R",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-28T19:43"
+  "turbine": "C4A",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-28T20:20"
+  "turbine": "H4P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-28T20:57"
+  "turbine": "A3A",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-28T22:19"
+  "turbine": "F8J",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-28T22:20"
+  "turbine": "B9C",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-28T22:28"
+  "turbine": "E1P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-28T22:58"
+  "turbine": "E11B",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-28T23:00"
+  "turbine": "H6Q",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-28T23:21"
+  "turbine": "G4P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-28T23:45"
+  "turbine": "H7R",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-29T00:11"
+  "turbine": "J5P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-29T00:31"
+  "turbine": "G9K",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-29T00:37"
+  "turbine": "E14D",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-29T00:56"
+  "turbine": "B4B",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-29T01:17"
+  "turbine": "H8J",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-29T01:50"
+  "turbine": "H20F",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-29T01:58"
+  "turbine": "D7B",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-29T03:15"
+  "turbine": "E1P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-29T03:18"
+  "turbine": "C4A",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-29T04:02"
+  "turbine": "D5A",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-29T04:14"
+  "turbine": "K6K",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-29T04:20"
+  "turbine": "C5A",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-29T06:22"
+  "turbine": "K2M",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-29T06:45"
+  "turbine": "B3A",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-29T07:15"
+  "turbine": "F10H_PR",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-29T09:36"
+  "turbine": "E7J",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-29T09:54"
+  "turbine": "E8J",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-29T10:23"
+  "turbine": "D5A",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-29T12:22"
+  "turbine": "E6R",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-29T12:24"
+  "turbine": "A1A",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-29T12:57"
+  "turbine": "H8J",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-29T13:29"
+  "turbine": "H15F",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-29T13:49"
+  "turbine": "H2N",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-29T14:14"
+  "turbine": "B9C",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-29T14:39"
+  "turbine": "B4B",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-29T14:42"
+  "turbine": "E7J",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-29T14:52"
+  "turbine": "E14D",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-29T15:01"
+  "turbine": "F10H_PR",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-29T15:33"
+  "turbine": "D5A",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-29T17:58"
+  "turbine": "F10H_PR",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-29T18:14"
+  "turbine": "E8J",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-29T19:06"
+  "turbine": "H2N",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-29T19:15"
+  "turbine": "A3A",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-29T19:33"
+  "turbine": "H20F",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-29T19:35"
+  "turbine": "E11B",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-29T19:54"
+  "turbine": "D4J",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-29T20:34"
+  "turbine": "H15F",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-29T21:18"
+  "turbine": "D5A",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-29T21:24"
+  "turbine": "D7B",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-29T21:44"
+  "turbine": "E7J",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-29T21:50"
+  "turbine": "B4B",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-29T21:51"
+  "turbine": "H2N",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-29T22:12"
+  "turbine": "E1P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-29T22:44"
+  "turbine": "G4P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-29T22:50"
+  "turbine": "A1A",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-29T23:10"
+  "turbine": "E14D",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}
+{
+  "date": "2015-11-29T23:45"
+  "turbine": "H5P",
+  "person": "",
+  "error": "Turbine is broken",
+  "error_state": "open",
+}

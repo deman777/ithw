@@ -42,6 +42,6 @@ object Clock {
   final case class Start(time: LocalDateTime)
   final case class Tick(time: LocalDateTime)
   private final case object InnerTick
-  private def speedy(duration: FiniteDuration): FiniteDuration = duration * (14.minutes / 7.days).longValue()
+  private def speedy(duration: FiniteDuration): FiniteDuration = duration * (1.minutes / 7.days).longValue()
   val props: Props = Props[Clock]
 }

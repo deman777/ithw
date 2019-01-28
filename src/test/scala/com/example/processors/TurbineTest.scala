@@ -5,6 +5,7 @@ import java.time.LocalDateTime
 
 import akka.actor.{ActorRef, ActorSystem}
 import akka.testkit.{ImplicitSender, TestKit}
+import com.example.Reminders.{ClearReminders, RemindMe, RemindingYou}
 import com.example._
 import org.scalatest._
 

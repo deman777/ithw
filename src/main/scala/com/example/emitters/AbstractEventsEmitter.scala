@@ -59,5 +59,5 @@ abstract class AbstractEventsEmitter[E <: Event] extends Actor with ActorLogging
 
 object AbstractEventsEmitter {
   case object EventsFinished
-  case class Read(startTimestamp: LocalDateTime)
+  final case class Read(startTimestamp: LocalDateTime)
 }

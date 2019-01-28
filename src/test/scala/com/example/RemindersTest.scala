@@ -6,6 +6,7 @@ import java.time.LocalDateTime
 import akka.actor.{ActorSystem, Props}
 import akka.testkit.{ImplicitSender, TestKit, TestProbe}
 import com.example.Clock.Tick
+import com.example.Reminders.{ClearReminders, RemindMe, RemindingYou}
 import org.scalatest._
 
 class RemindersTest extends TestKit(ActorSystem("MySpec"))

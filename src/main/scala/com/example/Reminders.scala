@@ -4,6 +4,7 @@ import java.time.{Duration, LocalDateTime}
 
 import akka.actor.{Actor, ActorRef, Props}
 import com.example.Clock.Tick
+import com.example.Reminders.{ClearReminders, RemindMe, RemindingYou}
 
 final class Reminders extends Actor {
 
@@ -26,10 +27,8 @@ final class Reminders extends Actor {
 
 object Reminders {
   val props: Props = Props[Reminders]
+  trait ToReminders
+  final case class RemindMe(in: Duration, message: Any) extends ToReminders
+  final case class RemindingYou(timestamp: LocalDateTime, message: Any)
+  case object ClearReminders extends ToReminders
 }
-
-trait ToReminders
-final case class RemindMe(in: Duration, message: Any) extends ToReminders
-final case class RemindingYou(timestamp: LocalDateTime, message: Any)
-case object ClearReminders extends ToReminders
-

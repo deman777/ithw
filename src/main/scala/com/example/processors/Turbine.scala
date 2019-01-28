@@ -4,6 +4,7 @@ import java.time.Duration
 import java.time.Duration.{ofHours, ofMinutes}
 
 import akka.actor.{Actor, ActorLogging, Props}
+import com.example.Reminders.{ClearReminders, RemindMe, RemindingYou}
 import com.example._
 
 class Turbine(turbineId: TurbineId) extends Actor with ActorLogging {

@@ -1,7 +1,8 @@
 package com.example.processors
 
 import akka.actor.{Actor, Props}
-import com.example.{ErrorEvent, Movement, StatusUpdate, ToReminders}
+import com.example.Reminders.ToReminders
+import com.example.{ErrorEvent, Movement, StatusUpdate}
 
 class Processors extends Actor {
 

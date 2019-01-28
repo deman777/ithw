@@ -12,18 +12,19 @@ final class Reminders extends Actor {
   def withState(reminders: Seq[RemindAt], time: LocalDateTime): Receive = {
     case Tick(newTime) =>
       val (now, later) = reminders.partition(r => r.time.compareTo(newTime) <= 0)
-      now.foreach(r => r.who ! r.message)
+      now.foreach { remindAt =>
+        remindAt.who ! Reminder(newTime, remindAt.message)
+      }
       context.become(withState(later, newTime))
     case Remind(in, message) =>
       context.become(withState(reminders :+ RemindAt(time.plus(in), sender(), message), time))
     case ClearReminders =>
       context.become(withState(reminders.filterNot(r => r.who == sender()), time))
   }
-
   private final case class RemindAt(time: LocalDateTime, who: ActorRef, message: Any)
 }
 
-object Reminder {
+object Reminders {
   val props: Props = Props[Reminders]
 }
 

@@ -9,7 +9,7 @@ class Master extends Actor with ActorLogging {
   private val processors = context.actorOf(Processors.props, "processors")
   private val emitters = context.actorOf(Emitters.props, "emitters")
   private val clock = context.actorOf(Clock.props, "clock")
-  private val reminders = context.actorOf(Reminder.props, "reminders")
+  private val reminders = context.actorOf(Reminders.props, "reminders")
   private val logger = context.actorOf(Logger.props, "logger")
 
   override def receive: Receive = {

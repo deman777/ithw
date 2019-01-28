@@ -3,7 +3,8 @@ package com.example.processors
 import java.time.LocalDateTime
 
 import akka.actor.{Actor, Props}
-import com.example.{Closed, _}
+import com.example.Logger.{Closed, ErrorEvent}
+import com.example._
 
 class Person(personId: PersonId) extends Actor {
 

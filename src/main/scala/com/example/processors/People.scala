@@ -1,7 +1,8 @@
 package com.example.processors
 
 import akka.actor.{Actor, Props}
-import com.example.{ErrorEvent, Movement, PersonId}
+import com.example.Logger.ErrorEvent
+import com.example.{Movement, PersonId}
 
 class People extends Actor {
 

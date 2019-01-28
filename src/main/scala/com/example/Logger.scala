@@ -5,6 +5,7 @@ import java.time.LocalDateTime
 
 import akka.actor.{Actor, ActorLogging, Props}
 import com.example.Clock.Stop
+import com.example.Logger.ErrorEvent
 
 class Logger extends Actor with ActorLogging {
 
@@ -21,33 +22,31 @@ class Logger extends Actor with ActorLogging {
 
 object Logger {
   val props: Props = Props[Logger]
-}
-
-trait ErrorState {
-  val name: String
-  override def toString: String = name
-}
-case object Open extends ErrorState {
-  override val name: String = "open"
-}
-case object Closed extends ErrorState {
-  override val name: String = "closed"
-}
-
-case class ErrorEvent(
-  date: LocalDateTime,
-  turbine: TurbineId,
-  person: Option[PersonId],
-  error: String,
-  errorState: ErrorState
-) {
-  override def toString: String =
-    s"""|{
-        |  "date": "$date"
-        |  "turbine": "${turbine.id}",
-        |  "person": "${person.map(_.id).getOrElse("")}",
-        |  "error": "$error",
-        |  "error_state": "$errorState",
-        |}
-        |""".stripMargin
+  trait ErrorState {
+    val name: String
+    override def toString: String = name
+  }
+  final case object Open extends ErrorState {
+    override val name: String = "open"
+  }
+  final case object Closed extends ErrorState {
+    override val name: String = "closed"
+  }
+  final case class ErrorEvent(
+    date: LocalDateTime,
+    turbine: TurbineId,
+    person: Option[PersonId],
+    error: String,
+    errorState: ErrorState
+  ) {
+    override def toString: String =
+      s"""|{
+          |  "date": "$date"
+          |  "turbine": "${turbine.id}",
+          |  "person": "${person.map(_.id).getOrElse("")}",
+          |  "error": "$error",
+          |  "error_state": "$errorState",
+          |}
+          |""".stripMargin
+  }
 }

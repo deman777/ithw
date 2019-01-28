@@ -1,6 +1,7 @@
 package com.example.processors
 
 import akka.actor.{Actor, Props}
+import com.example.Logger.ErrorEvent
 import com.example.Reminders.ToReminders
 import com.example._
 

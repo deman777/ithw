@@ -4,6 +4,7 @@ import java.time.LocalDateTime
 
 import akka.actor.{ActorRef, ActorSystem}
 import akka.testkit.{ImplicitSender, TestKit, TestProbe}
+import com.example.Logger.{Closed, ErrorEvent}
 import com.example._
 import org.scalatest._
 

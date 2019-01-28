@@ -4,6 +4,7 @@ import java.time.Duration
 import java.time.Duration.{ofHours, ofMinutes}
 
 import akka.actor.{Actor, ActorLogging, Props}
+import com.example.Logger.{Closed, ErrorEvent, Open}
 import com.example.Reminders.{ClearReminders, RemindMe, RemindingYou}
 import com.example._
 

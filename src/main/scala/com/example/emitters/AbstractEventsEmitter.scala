@@ -1,6 +1,7 @@
 package com.example.emitters
 
 import java.nio.file.Paths
+import java.time.LocalDateTime
 
 import akka.actor.{Actor, ActorLogging}
 import akka.stream.ActorMaterializer
@@ -9,7 +10,7 @@ import akka.stream.alpakka.csv.scaladsl.CsvToMap.toMapAsStrings
 import akka.stream.scaladsl.{FileIO, Sink}
 import com.example.Clock.Tick
 import com.example.Event
-import com.example.emitters.MainEmitter.Read
+import com.example.emitters.AbstractEventsEmitter.{EventsFinished, Read}
 
 import scala.collection.immutable.Stream.Empty
 import scala.concurrent.ExecutionContextExecutor
@@ -49,11 +50,14 @@ abstract class AbstractEventsEmitter[E <: Event] extends Actor with ActorLogging
       futureEvents match {
         case Empty =>
           log.info("My events finished")
-          context.parent ! EmitterEventsFinished
+          context.parent ! EventsFinished
         case _ =>
           context.become(withEvents(futureEvents))
       }
   }
 }
 
-case object EmitterEventsFinished
+object AbstractEventsEmitter {
+  case object EventsFinished
+  case class Read(startTimestamp: LocalDateTime)
+}

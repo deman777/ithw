@@ -5,7 +5,7 @@ import java.time.LocalDateTime
 import akka.actor.{Actor, ActorLogging, ActorRef, Props}
 import com.example.Clock.{Start, Stop, Tick}
 import com.example.Event
-import com.example.emitters.MainEmitter.Read
+import com.example.emitters.AbstractEventsEmitter.{EventsFinished, Read}
 
 import scala.collection.immutable.Set
 
@@ -52,7 +52,7 @@ class MainEmitter extends Actor with ActorLogging {
   private def emittingEvents(emitting: Set[ActorRef]): Receive = {
     case tick: Tick => context.children.foreach(_.forward(tick))
     case event: Event => context.parent.forward(event)
-    case EmitterEventsFinished => afterEmitterEventsFinished(emitting - sender())
+    case EventsFinished => afterEmitterEventsFinished(emitting - sender())
   }
 
   private def afterEmitterEventsFinished(emitting: Set[ActorRef]): Unit = {
@@ -68,5 +68,4 @@ class MainEmitter extends Actor with ActorLogging {
 
 object MainEmitter {
   val props: Props = Props[MainEmitter]
-  case class Read(startTimestamp: LocalDateTime)
 }

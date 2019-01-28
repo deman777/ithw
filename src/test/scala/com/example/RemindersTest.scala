@@ -31,11 +31,11 @@ class RemindersTest extends TestKit(ActorSystem("MySpec"))
 
     val t1 = startTime.plus(ofMinutes(1))
     reminder ! Tick(t1)
-    p1.expectMsg(Reminder(t1, Message(1)))
+    p1.expectMsg(RemindingYou(t1, Message(1)))
 
     val t2 = startTime.plus(ofMinutes(2))
     reminder ! Tick(t2)
-    p2.expectMsg(Reminder(t2, Message(2)))
+    p2.expectMsg(RemindingYou(t2, Message(2)))
   }
 
   test("reminders can be cleared") {
@@ -49,7 +49,7 @@ class RemindersTest extends TestKit(ActorSystem("MySpec"))
     val t1: LocalDateTime = startTime.plus(ofMinutes(1))
     reminder ! Tick(t1)
     p1.expectNoMessage()
-    p2.expectMsg(Reminder(t1, Message(2)))
+    p2.expectMsg(RemindingYou(t1, Message(2)))
   }
 
   private case class Message(n: Int)

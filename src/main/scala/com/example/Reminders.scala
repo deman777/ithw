@@ -13,7 +13,7 @@ final class Reminders extends Actor {
     case Tick(newTime) =>
       val (now, later) = reminders.partition(r => r.time.compareTo(newTime) <= 0)
       now.foreach { remindAt =>
-        remindAt.who ! Reminder(newTime, remindAt.message)
+        remindAt.who ! RemindingYou(newTime, remindAt.message)
       }
       context.become(withState(later, newTime))
     case RemindMe(in, message) =>
@@ -30,6 +30,6 @@ object Reminders {
 
 trait ToReminders
 final case class RemindMe(in: Duration, message: Any) extends ToReminders
+final case class RemindingYou(timestamp: LocalDateTime, message: Any)
 case object ClearReminders extends ToReminders
 
-final case class Reminder(timestamp: LocalDateTime, message: Any)

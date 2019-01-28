@@ -1,13 +1,21 @@
 package com.example
 
+import java.io.{BufferedWriter, FileWriter}
 import java.time.LocalDateTime
 
 import akka.actor.{Actor, ActorLogging, Props}
+import com.example.Clock.Stop
 
 class Logger extends Actor with ActorLogging {
+
+  private val writer = new BufferedWriter(new FileWriter("data/errors.txt"))
+
   override def receive: Receive = {
     case error: ErrorEvent =>
-      log.error(error.toString)
+      writer.write(error.toString)
+      writer.flush()
+    case Stop =>
+      writer.close()
   }
 }
 
@@ -34,13 +42,12 @@ case class ErrorEvent(
   errorState: ErrorState
 ) {
   override def toString: String =
-    s"""
-       |{
-       |  "date": "$date"
-       |  "turbine": "${turbine.id}",
-       |  "person": "${person.map(_.id).getOrElse("")}",
-       |  "error": "$error",
-       |  "error_state": "$errorState",
-       |}
-      """.stripMargin
+    s"""|{
+        |  "date": "$date"
+        |  "turbine": "${turbine.id}",
+        |  "person": "${person.map(_.id).getOrElse("")}",
+        |  "error": "$error",
+        |  "error_state": "$errorState",
+        |}
+        |""".stripMargin
 }

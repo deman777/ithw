@@ -32,6 +32,7 @@ class Master extends Actor with ActorLogging {
 
     case Stop =>
       clock.forward(Stop)
+      logger.forward(Stop)
       log.info("here i should shut down gracefully")
   }
 }

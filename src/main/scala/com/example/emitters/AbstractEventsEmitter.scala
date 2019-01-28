@@ -9,7 +9,7 @@ import akka.stream.alpakka.csv.scaladsl.CsvToMap.toMapAsStrings
 import akka.stream.scaladsl.{FileIO, Sink}
 import com.example.Clock.Tick
 import com.example.Event
-import com.example.emitters.Emitters.Read
+import com.example.emitters.MainEmitter.Read
 
 import scala.collection.immutable.Stream.Empty
 import scala.concurrent.ExecutionContextExecutor

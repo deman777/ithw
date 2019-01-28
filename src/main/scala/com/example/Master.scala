@@ -2,12 +2,12 @@ package com.example
 
 import akka.actor.{Actor, ActorLogging}
 import com.example.Clock.{Start, Stop, Tick}
-import com.example.emitters.Emitters
+import com.example.emitters.MainEmitter
 import com.example.processors.Processors
 
 class Master extends Actor with ActorLogging {
   private val processors = context.actorOf(Processors.props, "processors")
-  private val emitters = context.actorOf(Emitters.props, "emitters")
+  private val emitters = context.actorOf(MainEmitter.props, "emitters")
   private val clock = context.actorOf(Clock.props, "clock")
   private val reminders = context.actorOf(Reminders.props, "reminders")
   private val logger = context.actorOf(Logger.props, "logger")

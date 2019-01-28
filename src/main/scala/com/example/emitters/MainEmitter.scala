@@ -5,11 +5,11 @@ import java.time.LocalDateTime
 import akka.actor.{Actor, ActorLogging, ActorRef, Props}
 import com.example.Clock.{Start, Stop, Tick}
 import com.example.Event
-import com.example.emitters.Emitters.Read
+import com.example.emitters.MainEmitter.Read
 
 import scala.collection.immutable.Set
 
-class Emitters extends Actor with ActorLogging {
+class MainEmitter extends Actor with ActorLogging {
 
   log.info("Initializing emitters")
 
@@ -67,7 +67,7 @@ class Emitters extends Actor with ActorLogging {
   private def min(a: LocalDateTime, b: LocalDateTime) = if (a.compareTo(b) < 0) a else b
 }
 
-object Emitters {
-  val props: Props = Props[Emitters]
+object MainEmitter {
+  val props: Props = Props[MainEmitter]
   case class Read(startTimestamp: LocalDateTime)
 }

@@ -48,3 +48,5 @@ abstract class AbstractEventsEmitter[E <: Event] extends Actor with ActorLogging
       context.become(withEvents(futureEvents))
   }
 }
+
+case object EmitterEventsFinished

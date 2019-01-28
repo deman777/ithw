@@ -10,9 +10,10 @@ class People extends Actor {
     case logError: LogError => context.parent.forward(logError)
   }
 
-  private def person(personId: PersonId) =
-    context.child(personId.id)
-      .getOrElse(context.actorOf(Person.props(personId), personId.id))
+  private def person(personId: PersonId) = {
+    val name = personId.id
+    context.child(name).getOrElse(context.actorOf(Person.props(personId), name))
+  }
 }
 
 object People {

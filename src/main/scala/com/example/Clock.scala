@@ -40,7 +40,7 @@ class Clock extends Actor with ActorLogging with Timers {
 object Clock {
   private final case object InnerTick
   private def speedy(duration: FiniteDuration): FiniteDuration =
-    (duration / (7.days / 1.minutes)).asInstanceOf[FiniteDuration]
+    (duration / (7.days / 14.minutes)).asInstanceOf[FiniteDuration]
   final case class Start(time: LocalDateTime)
   final case class Tick(time: LocalDateTime)
   case object Stop

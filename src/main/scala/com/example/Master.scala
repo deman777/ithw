@@ -10,10 +10,10 @@ class Master extends Actor with ActorLogging {
   private val emitters = context.actorOf(Emitters.props, "emitters")
   private val clock = context.actorOf(Clock.props, "clock")
   private val reminders = context.actorOf(Reminder.props, "reminders")
+  private val logger = context.actorOf(Logger.props, "logger")
 
   override def receive: Receive = {
     case start: Start =>
-      log.info("Forwarding start to clock.")
       clock.forward(start)
     case tick: Tick =>
       emitters.forward(tick)
@@ -22,5 +22,7 @@ class Master extends Actor with ActorLogging {
       processors.forward(event)
     case toReminders: ToReminders =>
       reminders.forward(toReminders)
+    case logError: LogError =>
+      logger.forward(logError)
   }
 }

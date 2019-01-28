@@ -3,6 +3,7 @@ package com.example
 import akka.actor.{Actor, ActorLogging}
 import com.example.Clock.{Start, Tick}
 import com.example.emitters.Emitters
+import com.example.emitters.Emitters.AllEventsFinished
 import com.example.processors.Processors
 
 class Master extends Actor with ActorLogging {
@@ -24,5 +25,7 @@ class Master extends Actor with ActorLogging {
       reminders.forward(toReminders)
     case logError: LogError =>
       logger.forward(logError)
+    case AllEventsFinished =>
+      log.info("here i should shut down gracefully")
   }
 }

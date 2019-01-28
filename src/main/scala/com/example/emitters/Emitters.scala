@@ -3,9 +3,9 @@ package com.example.emitters
 import java.time.LocalDateTime
 
 import akka.actor.{Actor, ActorLogging, ActorRef, Props}
-import com.example.Clock.{Start, Tick}
+import com.example.Clock.{Start, Stop, Tick}
 import com.example.Event
-import com.example.emitters.Emitters.{AllEventsFinished, Read}
+import com.example.emitters.Emitters.Read
 
 import scala.collection.immutable.Set
 
@@ -59,7 +59,7 @@ class Emitters extends Actor with ActorLogging {
   private def afterEmitterEventsFinished(emitting: Set[ActorRef]): Unit = {
     if (emitting.isEmpty) {
       log.info("ALL EVENTS FINISHED, notifying parent")
-      context.parent ! AllEventsFinished
+      context.parent ! Stop
     }
     else context.become(emittingEvents(emitting))
   }
@@ -70,5 +70,4 @@ class Emitters extends Actor with ActorLogging {
 object Emitters {
   val props: Props = Props[Emitters]
   case class Read(startTimestamp: LocalDateTime)
-  case object AllEventsFinished
 }

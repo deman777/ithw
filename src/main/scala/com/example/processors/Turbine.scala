@@ -12,7 +12,7 @@ class Turbine(turbineId: TurbineId) extends Actor with ActorLogging {
   }
 
   private def onBroken(statusUpdate: StatusUpdate): Unit = {
-    reportError(LogError(statusUpdate.timestamp, turbineId, None, "Turbine is broken", Open))
+    logError(LogError(statusUpdate.timestamp, turbineId, None, "Turbine is broken", Open))
     remind(ofHours(4), BrokenFourHours)
     context.become({
       case Movement(_, _, _, Enter) => onEnter()
@@ -23,7 +23,13 @@ class Turbine(turbineId: TurbineId) extends Actor with ActorLogging {
 
   private def onBrokenFourHours(r: Reminder): Unit = {
     log.info("Got reminding about broken for 4 hours")
-    reportError(LogError(r.timestamp, turbineId, None, "Turbine is broken for more than 4 hours", Open))
+    logError(LogError(r.timestamp, turbineId, None, "Turbine is broken for more than 4 hours", Open))
+    context.become({
+      case Movement(timestamp, _: TurbineId, personId, Enter) =>
+        logError(LogError(timestamp, turbineId, Some(personId), "Turbine is broken for more than 4 hours", Closed))
+        onEnter()
+      case StatusUpdate(_, _, Working) => onWorking()
+    })
   }
 
   private def onEnter(): Unit = {
@@ -39,7 +45,7 @@ class Turbine(turbineId: TurbineId) extends Actor with ActorLogging {
     context.become({
       case Reminder(timestamp, BrokenAfterTechnician(personId)) =>
         log.info("Got reminding about broken after technician left " + personId)
-        reportError(LogError(timestamp, turbineId, Some(personId), "Technician did not repair turbine", Open))
+        logError(LogError(timestamp, turbineId, Some(personId), "Technician did not repair turbine", Open))
       case StatusUpdate(_, _, Working) => onWorking()
     })
   }
@@ -59,8 +65,8 @@ class Turbine(turbineId: TurbineId) extends Actor with ActorLogging {
     context.parent ! Remind(in, message)
   }
 
-  private def reportError(logError: LogError): Unit = {
-    context.parent ! logError
+  private def logError(errorEvent: LogError): Unit = {
+    context.parent ! errorEvent
   }
 }
 

@@ -15,9 +15,16 @@ object Logger {
   val props: Props = Props[Logger]
 }
 
-trait ErrorState
-case object Open extends ErrorState
-case object Closed extends ErrorState
+trait ErrorState {
+  val name: String
+  override def toString: String = name
+}
+case object Open extends ErrorState {
+  override val name: String = "open"
+}
+case object Closed extends ErrorState {
+  override val name: String = "closed"
+}
 
 case class LogError(
   date: LocalDateTime,
@@ -33,7 +40,7 @@ case class LogError(
        |  "turbine": "${turbine.id}",
        |  "person": "${person.map(_.id).getOrElse("")}",
        |  "error": "$error",
-       |  "error_state": "${errorState.getClass.getSimpleName.toLowerCase}",
+       |  "error_state": "$errorState",
        |}
       """.stripMargin
 }

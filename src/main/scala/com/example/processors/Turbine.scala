@@ -3,10 +3,10 @@ package com.example.processors
 import java.time.Duration
 import java.time.Duration.{ofHours, ofMinutes}
 
-import akka.actor.{Actor, Props}
+import akka.actor.{Actor, ActorLogging, Props}
 import com.example._
 
-class Turbine(turbineId: TurbineId) extends Actor {
+class Turbine(turbineId: TurbineId) extends Actor with ActorLogging {
   override def receive: Receive = {
     case m@StatusUpdate(_, _, Broken) => onBroken(m)
   }
@@ -22,6 +22,7 @@ class Turbine(turbineId: TurbineId) extends Actor {
   }
 
   private def onBrokenFourHours(r: Reminder): Unit = {
+    log.info("Got reminding about broken for 4 hours")
     reportError(LogError(r.timestamp, turbineId, None, "Turbine is broken for more than 4 hours", Open))
   }
 
@@ -37,6 +38,7 @@ class Turbine(turbineId: TurbineId) extends Actor {
     remind(ofMinutes(3), BrokenAfterTechnician(movement.personId))
     context.become({
       case Reminder(timestamp, BrokenAfterTechnician(personId)) =>
+        log.info("Got reminding about broken after technician left " + personId)
         reportError(LogError(timestamp, turbineId, Some(personId), "Technician did not repair turbine", Open))
       case StatusUpdate(_, _, Working) => onWorking()
     })

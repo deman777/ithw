@@ -25,9 +25,9 @@ class RemindersTest extends TestKit(ActorSystem("MySpec"))
 
   test("tick reminds correct events") {
     val p1 = TestProbe()
-    p1.send(reminder, Remind(ofMinutes(1), Message(1)))
+    p1.send(reminder, RemindMe(ofMinutes(1), Message(1)))
     val p2 = TestProbe()
-    p2.send(reminder, Remind(ofMinutes(2), Message(2)))
+    p2.send(reminder, RemindMe(ofMinutes(2), Message(2)))
 
     val t1 = startTime.plus(ofMinutes(1))
     reminder ! Tick(t1)
@@ -40,9 +40,9 @@ class RemindersTest extends TestKit(ActorSystem("MySpec"))
 
   test("reminders can be cleared") {
     val p1 = TestProbe()
-    p1.send(reminder, Remind(ofMinutes(1), Message(1)))
+    p1.send(reminder, RemindMe(ofMinutes(1), Message(1)))
     val p2 = TestProbe()
-    p2.send(reminder, Remind(ofMinutes(1), Message(2)))
+    p2.send(reminder, RemindMe(ofMinutes(1), Message(2)))
 
     p1.send(reminder, ClearReminders)
 

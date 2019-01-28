@@ -39,7 +39,7 @@ class TurbineTest extends TestKit(ActorSystem("MySpec")) with ImplicitSender
     expectMsg(ClearReminders)
 
     turbine ! exit
-    expectMsg(Remind(ofMinutes(3), BrokenAfterTechnician(personId)))
+    expectMsg(RemindMe(ofMinutes(3), BrokenAfterTechnician(personId)))
 
     val timestamp = LocalDateTime.now()
     turbine ! Reminder(timestamp, BrokenAfterTechnician(personId))
@@ -50,7 +50,7 @@ class TurbineTest extends TestKit(ActorSystem("MySpec")) with ImplicitSender
   test("A turbine has been in a Broken state for more than 4 hours") {
     turbine ! broken
     receiveOne(Undefined)
-    expectMsg(Remind(ofHours(4), BrokenFourHours))
+    expectMsg(RemindMe(ofHours(4), BrokenFourHours))
 
     val timestamp = LocalDateTime.now()
     turbine ! Reminder(timestamp, BrokenFourHours)

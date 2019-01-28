@@ -62,7 +62,7 @@ class Turbine(turbineId: TurbineId) extends Actor with ActorLogging {
   }
 
   private def remind(in: Duration, message: Any): Unit = {
-    context.parent ! Remind(in, message)
+    context.parent ! RemindMe(in, message)
   }
 
   private def logError(errorEvent: LogError): Unit = {

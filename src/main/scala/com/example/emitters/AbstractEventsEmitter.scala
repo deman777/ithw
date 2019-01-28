@@ -2,6 +2,7 @@ package com.example.emitters
 
 import java.nio.file.Paths
 import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 import akka.actor.{Actor, ActorLogging}
 import akka.stream.ActorMaterializer
@@ -54,6 +55,10 @@ abstract class AbstractEventsEmitter[E <: Event] extends Actor with ActorLogging
         case _ =>
           context.become(withEvents(futureEvents))
       }
+  }
+
+  protected def parseTimestamp(string: String, format: String): LocalDateTime = {
+    LocalDateTime.parse(string, DateTimeFormatter.ofPattern(format))
   }
 }
 

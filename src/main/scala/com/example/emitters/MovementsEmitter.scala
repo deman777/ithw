@@ -19,7 +19,7 @@ class MovementsEmitter extends AbstractEventsEmitter[Movement] {
 
   private def toMovement(data: Map[String, String]) = {
     Movement(
-      Time.parse(data("Date"), "dd.MM.yyyy HH:mm"),
+      parseTimestamp(data("Date"), "dd.MM.yyyy HH:mm"),
       parseLocation(data("Location")),
       PersonId(data("Person")),
       parseDirection(data("Movement type"))

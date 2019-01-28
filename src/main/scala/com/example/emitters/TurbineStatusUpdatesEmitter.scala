@@ -14,7 +14,7 @@ class TurbineStatusUpdatesEmitter extends AbstractEventsEmitter[StatusUpdate] {
 
   private def toStatusUpdate(map: Map[String, String]): StatusUpdate = {
     StatusUpdate(
-      Time.parse(map("Date"), "yyyy-MM-dd HH:mm:ss"),
+      parseTimestamp(map("Date"), "yyyy-MM-dd HH:mm:ss"),
       TurbineId(map("ID")),
       parseStatus(map("Status"))
     )

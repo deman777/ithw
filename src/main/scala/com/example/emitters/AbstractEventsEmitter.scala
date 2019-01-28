@@ -46,15 +46,13 @@ abstract class AbstractEventsEmitter[E <: Event] extends Actor with ActorLogging
     case Tick(tick) =>
       val (nowEvents, futureEvents) = events.span(_.timestamp.compareTo(tick) <= 0)
       nowEvents.foreach(context.parent ! _)
-  }
-
-  def afterTick(events: Seq[Event]): Unit = {
-    events match {
-      case Empty =>
-        log.info("My events finished")
-        context.parent ! EmitterEventsFinished
-      case _ => context.become(withEvents(events))
-    }
+      futureEvents match {
+        case Empty =>
+          log.info("My events finished")
+          context.parent ! EmitterEventsFinished
+        case _ =>
+          context.become(withEvents(futureEvents))
+      }
   }
 }
 
